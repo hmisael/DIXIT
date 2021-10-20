@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/navigation_frases"
+        app:startDestination="@id/frasesFragment">
+
+        <fragment
+            android:id="@+id/frasesFragment"
+            android:name="com.example.dixit_app.view.FrasesFragment"
+            android:label="fragment_frases"
+            tools:layout="@layout/fragment_frases" >
+            <action
+                android:id="@+id/action_frasesFragment_to_fraseDetalleFragment"
+                app:destination="@id/fraseDetalleFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
+        </fragment>
+
+        <fragment
+            android:id="@+id/fraseDetalleFragment"
+            android:name="com.example.dixit_app.view.FraseDetalleFragment"
+            android:label="Detalle de Frase"
+            tools:layout="@layout/fragment_frase_detalle" >
+            <action
+                android:id="@+id/action_fraseDetalleFragment_to_frasesFragment"
+                app:destination="@id/frasesFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
+            <argument
+                android:name="frase"
+                app:argType="com.example.dixit_app.model.entidades.Frase"
+                app:nullable="true" />
+            <action
+                android:id="@+id/action_fraseDetalleFragment_to_fraseModificarFragment"
+                app:destination="@id/fraseModificarFragment" />
+
+        </fragment>
+    <fragment
+        android:id="@+id/fraseModificarFragment"
+        android:name="com.example.dixit_app.view.FraseModificarFragment"
+        android:label="fragment_frase_modificar"
+        tools:layout="@layout/fragment_frase_modificar" >
+        <argument
+            android:name="frase"
+            app:argType="com.example.dixit_app.model.entidades.Frase"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_fraseModificarFragment_to_frasesFragment"
+            app:destination="@id/frasesFragment" />
+    </fragment>
+
+</navigation>

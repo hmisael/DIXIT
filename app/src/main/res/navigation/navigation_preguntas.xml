@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_preguntas"
+    app:startDestination="@id/fragmentRutina1">
+
+    <fragment
+        android:id="@+id/preguntasFragment"
+        android:name="com.example.dixit_app.view.PreguntasFragment"
+        android:label="fragment_preguntas"
+        tools:layout="@layout/fragment_preguntas" />
+    <fragment
+        android:id="@+id/fragmentRutina1"
+        android:name="com.example.dixit_app.view.FragmentRutina1"
+        android:label="fragment_rutina1"
+        tools:layout="@layout/fragment_rutina1" />
+</navigation>

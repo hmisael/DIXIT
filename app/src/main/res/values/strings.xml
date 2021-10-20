@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">DIXIT_APP</string>
+    <string name="categorias">Categorías</string>
+    <string name="frases">Frases</string>
+    <string name="nueva_categoria">Nueva Categoría</string>
+    <string name="detalle_categorias">Categoría: Lista de pictogramas</string>
+    <string name="detalle_frases">Listado de Frases</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buscar">Buscar</string>
+    <string name="ingrese_t_tulo_de_la_categor_a">Ingrese título de la categoría</string>
+    <string name="agregar_categor_a">Agregar Categoría</string>
+    <string name="rutinas">Rutinas</string>
+    <string name="sin_elementos">Sin elementos disponibles :( Agregá uno desde el botón más (+)</string>
+    <string name="nombre_de_categor_a">Nombre de Categoría</string>
+    <string name="nombre_de_rutina">Nombre de Rutina</string>
+    <string name="ingrese_nombre_de_pictograma">Ingrese nombre de Pictograma</string>
+    <string name="guardar_los_cambios">Guardar los cambios</string>
+    <string name="agregar_pictogramas_desde_el_bot_n_inferior">Agregar Pictogramas desde el botón inferior</string>
+    <string name="agregar_rutinas_desde_el_bot_n_inferior">Agregar Rutinas desde el botón inferior</string>
+    <string name="nombre_de_pictograma">Nombre de pictograma</string>
+    <string name="agregar_pictograma">Agregar pictograma</string>
+    <string name="agregar_una_nueva_frase">Agregar una nueva frase</string>
+    <string name="agregar_una_nueva_categor_a">Agregar una nueva categoría</string>
+    <string name="no_hay_pictogramas_disponibles_cre_uno_nuevo_desde_el_men_categor_as">No hay pictogramas disponibles :(. Creá uno nuevo desde el menú Categorías</string>
+    <string name="agregar_rutina">Agregar Rutina</string>
+    <string name="t_tulo_de_frase">Título de frase</string>
+    <string name="pictograma">Pictograma</string>
+</resources>

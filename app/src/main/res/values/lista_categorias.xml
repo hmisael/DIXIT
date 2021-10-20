@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listaCategorias">
+        <item>Personas</item>
+        <item>Lugares</item>
+        <item>Preguntas</item>
+        <item>Comida</item>
+    </string-array>
+
+
+</resources>

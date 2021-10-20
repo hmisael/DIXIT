@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_categorias"
+    app:startDestination="@id/categoriasFragment">
+
+    <fragment
+        android:id="@+id/categoriasFragment"
+        android:name="com.example.dixit_app.view.CategoriasFragment"
+        android:label="Categorías"
+        tools:layout="@layout/fragment_categorias" >
+        <action
+            android:id="@+id/action_categoriasFragment_to_categoriaDetalleFragment"
+            app:destination="@id/categoriaDetalleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoriaDetalleFragment"
+        android:name="com.example.dixit_app.view.CategoriaDetalleFragment"
+        android:label="Detalle de Categoría"
+        tools:layout="@layout/fragment_categoria_detalle" >
+        <action
+            android:id="@+id/action_categoriaDetalleFragment_to_categoriasFragment"
+            app:destination="@id/categoriasFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <argument
+            android:name="categoria"
+            app:argType="com.example.dixit_app.model.entidades.Categoria"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_categoriaDetalleFragment_to_pictogramaNuevoFragment"
+            app:destination="@id/pictogramaNuevoFragment" />
+        <action
+            android:id="@+id/action_categoriaDetalleFragment_to_pictogramaModificarFragment"
+            app:destination="@id/pictogramaModificarFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pictogramaNuevoFragment"
+        android:name="com.example.dixit_app.view.PictogramaNuevoFragment"
+        android:label="PictogramaNuevoFragment">
+
+        <action
+            android:id="@+id/action_pictogramaNuevoFragment_to_categoriaDetalleFragment"
+            app:destination="@id/categoriaDetalleFragment" />
+        <argument
+            android:name="categoriaNombre"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/pictogramaModificarFragment"
+        android:name="com.example.dixit_app.view.PictogramaModificarFragment"
+        android:label="PictogramaModificarFragment" >
+        <action
+            android:id="@+id/action_pictogramaModificarFragment_to_categoriaDetalleFragment"
+            app:destination="@id/categoriaDetalleFragment" />
+        <argument
+            android:name="pictograma"
+            app:argType="com.example.dixit_app.model.entidades.Pictograma"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>

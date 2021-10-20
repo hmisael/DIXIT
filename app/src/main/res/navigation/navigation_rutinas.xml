@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_rutinas"
+    app:startDestination="@id/rutinasFragment">
+
+    <fragment
+        android:id="@+id/rutinasFragment"
+        android:name="com.example.dixit_app.view.RutinasFragment"
+        android:label="fragment_rutinas"
+        tools:layout="@layout/fragment_rutinas" >
+        <action
+            android:id="@+id/action_rutinasFragment_to_rutinaDetalleFragment"
+            app:destination="@id/rutinaDetalleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/rutinaDetalleFragment"
+        android:name="com.example.dixit_app.view.RutinaDetalleFragment"
+        android:label="fragment_rutina_detalle"
+        tools:layout="@layout/fragment_rutina_detalle" >
+        <action
+            android:id="@+id/action_rutinaDetalleFragment_to_rutinasFragment"
+            app:destination="@id/rutinasFragment" />
+        <argument
+            android:name="rutina"
+            app:argType="com.example.dixit_app.model.entidades.Rutina"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>

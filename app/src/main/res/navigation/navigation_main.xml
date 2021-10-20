@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.dixit_app.view.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+
+    <activity
+        android:id="@+id/categoriasActivity"
+        android:name="com.example.dixit_app.CategoriasActivity"
+        android:label="activity_categorias"
+        tools:layout="@layout/activity_categorias" />
+    <activity
+        android:id="@+id/preguntasActivity"
+        android:name="com.example.dixit_app.PreguntasActivity"
+        android:label="activity_preguntas"
+        tools:layout="@layout/activity_preguntas" />
+    <activity
+        android:id="@+id/rutinasActivity"
+        android:name="com.example.dixit_app.RutinasActivity"
+        android:label="activity_rutinas"
+        tools:layout="@layout/activity_rutinas" />
+    <activity
+        android:id="@+id/frasesActivity"
+        android:name="com.example.dixit_app.FrasesActivity"
+        android:label="activity_frases"
+        tools:layout="@layout/activity_frases" />
+</navigation>
