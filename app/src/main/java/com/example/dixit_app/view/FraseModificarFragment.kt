@@ -1,8 +1,6 @@
 package com.example.dixit_app.view
 
-import android.location.GnssAntennaInfo
 import android.os.Bundle
-import android.view.DragEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,11 +13,8 @@ import com.bumptech.glide.Glide
 import com.example.dixit_app.FrasesActivity
 import com.example.dixit_app.R
 import com.example.dixit_app.databinding.FragmentFraseModificarBinding
-import com.example.dixit_app.helper.Listener
 import com.example.dixit_app.model.DixitDatabase
-import com.example.dixit_app.model.entidades.Categoria
 import com.example.dixit_app.model.entidades.Frase
-import com.example.dixit_app.model.entidades.Pictograma
 import com.example.dixit_app.repository.PictogramaRepository
 import com.example.dixit_app.viewmodel.FraseViewModel
 import com.example.dixit_app.viewmodel.PictogramaViewModel
@@ -43,7 +38,7 @@ class FraseModificarFragment : Fragment(R.layout.fragment_frase_modificar){
     private lateinit var currentFrase: Frase
 
     //Adapter para ambos RV (no carga, solo es la vista del RV)
-    private lateinit var pictosFraseRVTopAdapter : PictosFraseRVAdapter
+    private lateinit var pictogramasFraseRVTopAdapter : PictogramasFraseRVTopAdapter
     private lateinit var pictosFraseRVBottomAdapter : PictosFraseRVAdapter
 
     //un View Model para Frase
@@ -110,6 +105,7 @@ class FraseModificarFragment : Fragment(R.layout.fragment_frase_modificar){
     }
 
     private fun setBottomRecyclerView() {
+        //Asociar adapter para RV Bottom (los pictogramas guardados)
         pictosFraseRVBottomAdapter = PictosFraseRVAdapter()
         binding.rvBottomFrase.apply {
             layoutManager = StaggeredGridLayoutManager(
@@ -120,22 +116,37 @@ class FraseModificarFragment : Fragment(R.layout.fragment_frase_modificar){
             adapter = pictosFraseRVBottomAdapter
        }
 
-        //Carga de datos en RV inferior
+        //Carga de datos en RV Bottom
 
         activity?.let {
             pictogramaViewModel.getAllPictogramas()
                 .observe(viewLifecycleOwner, { pictogramas ->
-                  pictosFraseRVBottomAdapter.differ.submitList(pictogramas)
-                    updateUI(pictogramas)
+                    pictosFraseRVBottomAdapter.differBottom.submitList(pictogramas)
+                    //updateUI(pictogramas)
                 })
         }
+
+
+
+        //Asociar adapter para RV Top (los pictogramas seleccionados)
+        pictogramasFraseRVTopAdapter = PictogramasFraseRVTopAdapter()
+        binding.rvBottomFrase.apply {
+            layoutManager = LinearLayoutManager(this.context)
+            setHasFixedSize(true)
+            adapter = pictogramasFraseRVTopAdapter
+        }
+
+        //Carga de datos RV Top PICTOGRAMAS GUARDADOS EN  LA FRASE!
+
+        //cri cri
+
 
 
 
 
     }
 
-    private fun updateUI(pictogramas: List<Pictograma>) {
+    /*private fun updateUI(pictogramas: List<Pictograma>) {
         if (pictogramas.isNotEmpty()) {
             binding.cardView3.visibility = View.GONE
             binding.rvBottomFrase.visibility = View.VISIBLE
@@ -143,7 +154,7 @@ class FraseModificarFragment : Fragment(R.layout.fragment_frase_modificar){
             binding.cardView3.visibility = View.VISIBLE
             binding.rvBottomFrase.visibility = View.GONE
         }
-    }
+    }*/
 
 
 
