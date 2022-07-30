@@ -30,8 +30,6 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:usesCleartextTraffic">
 
-
-
         <activity android:name=".FrasesActivity" />
         <activity android:name=".RutinasActivity" />
         <activity android:name=".PreguntasActivity" />

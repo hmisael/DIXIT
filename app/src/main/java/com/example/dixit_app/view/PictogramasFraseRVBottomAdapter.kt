@@ -12,12 +12,14 @@ import com.example.dixit_app.databinding.ItemPictogramaBinding
 import com.example.dixit_app.model.entidades.Pictograma
 import java.io.File
 
-class PictogramasFraseRVBottomAdapter : RecyclerView.Adapter<PictogramasFraseRVBottomAdapter.PictogramaViewHolder>(){
+class PictogramasFraseRVBottomAdapter (val bottomAdapter : BottomAdapterClickInterface) :
+    RecyclerView.Adapter<PictogramasFraseRVBottomAdapter.PictogramaViewHolder>(){
 
 
     //El item xml se reutiliza (BottomRecyclerView) - Ambos RV lo usan
     class PictogramaViewHolder(val itemBinding: ItemPictogramaBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
+
     private var imageUri: Uri? = null
 
 
@@ -35,9 +37,8 @@ class PictogramasFraseRVBottomAdapter : RecyclerView.Adapter<PictogramasFraseRVB
     val differBottom = AsyncListDiffer(this, differBottomCallback)
 
 
-
     //Creo el Differ para los pictogramas del RV Top (Todos los pictos)
-    private val differTopCallback = object : DiffUtil.ItemCallback<Pictograma>() {
+    /*private val differTopCallback = object : DiffUtil.ItemCallback<Pictograma>() {
         override fun areItemsTheSame(oldItem: Pictograma, newItem: Pictograma): Boolean {
             return oldItem.idPictograma == newItem.idPictograma &&
                     oldItem.nombrePictograma == newItem.nombrePictograma
@@ -46,8 +47,9 @@ class PictogramasFraseRVBottomAdapter : RecyclerView.Adapter<PictogramasFraseRVB
         override fun areContentsTheSame(oldItem: Pictograma, newItem: Pictograma): Boolean {
             return oldItem == newItem
         }
-    }
-    val differTop = AsyncListDiffer(this, differTopCallback)
+    }*/
+
+    //val differTop = AsyncListDiffer(this, differTopCallback)
 
 
 
@@ -102,11 +104,14 @@ class PictogramasFraseRVBottomAdapter : RecyclerView.Adapter<PictogramasFraseRVB
 
         //Seteo el clickListener de cada ítem de la lista, para redirigir l fragmento  ModificarPictograma
         holder.itemView.setOnClickListener { view ->
+
+            bottomAdapter.onItemRVBottomClick(pictogramaActual)
+
+
             //Realizo copia de los resultados, casteando a una MutableList
             val copiedList = differBottom.currentList.toMutableList()
-
             //-----AGREGO A LA LISTA de TOP el seleccionado
-            differTop.currentList.add(differBottom.currentList[position])
+            //differBottom.currentList.add(differBottom.currentList[position])
 
             //Y elimino de la lista copiada el elemento de la posición clickeada
             copiedList.removeAt(position)
@@ -114,13 +119,12 @@ class PictogramasFraseRVBottomAdapter : RecyclerView.Adapter<PictogramasFraseRVB
             differBottom.submitList(copiedList)
 
 
-            //notifyItemRangeChanged(position, 1)
+            notifyItemRangeChanged(position, 1)
         }
 
 
 
     }
-
 
 
     override fun getItemCount(): Int {
@@ -131,4 +135,10 @@ class PictogramasFraseRVBottomAdapter : RecyclerView.Adapter<PictogramasFraseRVB
 
 
 
+}
+
+
+
+interface BottomAdapterClickInterface{
+    fun onItemRVBottomClick(pictograma : Pictograma)
 }

@@ -15,6 +15,7 @@ import com.example.dixit_app.R
 import com.example.dixit_app.databinding.FragmentFraseModificarBinding
 import com.example.dixit_app.model.DixitDatabase
 import com.example.dixit_app.model.entidades.Frase
+import com.example.dixit_app.model.entidades.Pictograma
 import com.example.dixit_app.repository.PictogramaRepository
 import com.example.dixit_app.viewmodel.FraseViewModel
 import com.example.dixit_app.viewmodel.PictogramaViewModel
@@ -23,7 +24,8 @@ import com.example.dixit_app.viewmodel.PictogramaViewModelFactory
 
 
 
-class FraseModificarFragment : Fragment(R.layout.fragment_frase_modificar){
+class FraseModificarFragment : Fragment(R.layout.fragment_frase_modificar),
+        TopAdapterClickInterface, BottomAdapterClickInterface {
 
     private var _binding: FragmentFraseModificarBinding? = null
     private val binding get() = _binding!!
@@ -34,12 +36,13 @@ class FraseModificarFragment : Fragment(R.layout.fragment_frase_modificar){
 
     //Instancia contexto de navegación de este Fragment
     private val args: FraseModificarFragmentArgs by navArgs()
+
     //Inicializo var Frase para instanciar la frase seleccionada previamente
     private lateinit var currentFrase: Frase
 
     //Adapter para ambos RV (no carga, solo es la vista del RV)
-    private lateinit var pictogramasFraseRVTopAdapter : PictogramasFraseRVTopAdapter
-    private lateinit var pictosFraseRVBottomAdapter : PictosFraseRVAdapter
+    private lateinit var pictogramasFraseRVTopAdapter: PictogramasFraseRVTopAdapter
+    private lateinit var pictogramasFraseRVBottomAdapter: PictogramasFraseRVBottomAdapter
 
     //un View Model para Frase
     private lateinit var fraseViewModel: FraseViewModel
@@ -104,33 +107,33 @@ class FraseModificarFragment : Fragment(R.layout.fragment_frase_modificar){
 
     }
 
+    //VER que estan ambos RV, no solo Bottom, en esta funcion
     private fun setBottomRecyclerView() {
         //Asociar adapter para RV Bottom (los pictogramas guardados)
-        pictosFraseRVBottomAdapter = PictosFraseRVAdapter()
+        pictogramasFraseRVBottomAdapter = PictogramasFraseRVBottomAdapter(this)
         binding.rvBottomFrase.apply {
             layoutManager = StaggeredGridLayoutManager(
                 3,
                 StaggeredGridLayoutManager.VERTICAL
             )
             setHasFixedSize(true)
-            adapter = pictosFraseRVBottomAdapter
-       }
+            adapter = pictogramasFraseRVBottomAdapter
+        }
 
         //Carga de datos en RV Bottom
 
         activity?.let {
             pictogramaViewModel.getAllPictogramas()
                 .observe(viewLifecycleOwner, { pictogramas ->
-                    pictosFraseRVBottomAdapter.differBottom.submitList(pictogramas)
+                    pictogramasFraseRVBottomAdapter.differBottom.submitList(pictogramas)
                     //updateUI(pictogramas)
                 })
         }
 
 
-
         //Asociar adapter para RV Top (los pictogramas seleccionados)
-        pictogramasFraseRVTopAdapter = PictogramasFraseRVTopAdapter()
-        binding.rvBottomFrase.apply {
+        pictogramasFraseRVTopAdapter = PictogramasFraseRVTopAdapter(this)
+        binding.rvTopFrase.apply {
             layoutManager = LinearLayoutManager(this.context)
             setHasFixedSize(true)
             adapter = pictogramasFraseRVTopAdapter
@@ -139,9 +142,6 @@ class FraseModificarFragment : Fragment(R.layout.fragment_frase_modificar){
         //Carga de datos RV Top PICTOGRAMAS GUARDADOS EN  LA FRASE!
 
         //cri cri
-
-
-
 
 
     }
@@ -155,6 +155,38 @@ class FraseModificarFragment : Fragment(R.layout.fragment_frase_modificar){
             binding.rvBottomFrase.visibility = View.GONE
         }
     }*/
+
+
+
+
+    override fun onItemRVBottomClick(pictograma: Pictograma) {
+        //Cuando se realiza un clic en el RV inferior, se agrega el ítem al RV superior
+        //pictogramasFraseRVTopAdapter.differTop.currentList.add(pictograma)
+
+        //Realizo copia de los resultados, casteando a una MutableList
+        val copiedList = pictogramasFraseRVTopAdapter.differTop.currentList.toMutableList()
+        //Elimino de la lista copiada el elemento de la posición clickeada
+        copiedList.add(pictograma)
+        //Le envío la lista resultante al differ
+
+        pictogramasFraseRVTopAdapter.differTop.submitList(copiedList)
+    }
+
+    override fun onItemRVTopClick(pictograma: Pictograma) {
+        //Cuando se realiza un clic en el RV superior, se agrega el ítem al RV inferior
+
+        //Realizo copia de los resultados, casteando a una MutableList
+        val copiedList = pictogramasFraseRVBottomAdapter.differBottom.currentList.toMutableList()
+        //Elimino de la lista copiada el elemento de la posición clickeada
+        copiedList.add(pictograma)
+        //Le envío la lista resultante al differ
+
+        pictogramasFraseRVBottomAdapter.differBottom.submitList(copiedList)
+
+
+    }
+
+
 
 
 

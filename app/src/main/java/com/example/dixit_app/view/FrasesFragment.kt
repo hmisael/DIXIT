@@ -95,7 +95,9 @@ class FrasesFragment : Fragment(R.layout.fragment_frases),
     private fun agregarFrase(){
         val inflater = LayoutInflater.from(this.context)
         val v =inflater.inflate(R.layout.categoria_add_item, null)
+
         //setear vista
+
         val nombreFrase = v.findViewById<EditText>(R.id.et_categoria)
         val addDialog = AlertDialog.Builder(activity!!)
         addDialog.setView(v)

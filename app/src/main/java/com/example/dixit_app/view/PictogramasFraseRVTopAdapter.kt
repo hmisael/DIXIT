@@ -13,22 +13,16 @@ import com.example.dixit_app.model.entidades.Pictograma
 import java.io.File
 
 
-class PictogramasFraseRVTopAdapter : RecyclerView.Adapter<PictogramasFraseRVTopAdapter.PictogramaTopViewHolder>(){
+class PictogramasFraseRVTopAdapter (val topAdapter : TopAdapterClickInterface) :
+    RecyclerView.Adapter<PictogramasFraseRVTopAdapter.PictogramaTopViewHolder>(){
 
-
-    private val callback : Callback? = null
     private var imageUri: Uri? = null
 
-
     //Holder para itemPictogramaSelected (TopRecyclerView)
-    class PictogramaTopViewHolder(val itemBinding: ItemPictogramaSelectedBinding, callbackk: Callback
-    ) : RecyclerView.ViewHolder(itemBinding.root)
+    class PictogramaTopViewHolder(val itemBinding: ItemPictogramaSelectedBinding) :
+        RecyclerView.ViewHolder(itemBinding.root)
 
 
-
-    interface Callback {
-        fun onItemClick(position: Int)
-    }
 
     //Creo el Differ para los pictogramas del RV Top (pictos guardados en Frase)
 
@@ -98,6 +92,9 @@ class PictogramasFraseRVTopAdapter : RecyclerView.Adapter<PictogramasFraseRVTopA
 
         //Seteo el clickListener de cada ítem de la lista, para redirigir l fragmento  ModificarPictograma
         holder.itemView.setOnClickListener { view ->
+
+            topAdapter.onItemRVTopClick(pictogramaActual)
+
             //Realizo copia de los resultados, casteando a una MutableList
             val copiedList = differTop.currentList.toMutableList()
             //Elimino de la lista copiada el elemento de la posición clickeada
@@ -106,7 +103,7 @@ class PictogramasFraseRVTopAdapter : RecyclerView.Adapter<PictogramasFraseRVTopA
             differTop.submitList(copiedList)
             notifyItemRemoved(position)
 
-            //notifyItemRangeChanged(position, 1)
+            notifyItemRangeChanged(position, 1)
         }
 
 
@@ -126,3 +123,14 @@ class PictogramasFraseRVTopAdapter : RecyclerView.Adapter<PictogramasFraseRVTopA
 
 
 }
+
+
+
+interface TopAdapterClickInterface{
+    fun onItemRVTopClick(pictograma : Pictograma)
+}
+
+
+/*interface BottomAdapterClickInterface{
+    fun onItemRVBottomClick(pictograma : Pictograma)
+}*/

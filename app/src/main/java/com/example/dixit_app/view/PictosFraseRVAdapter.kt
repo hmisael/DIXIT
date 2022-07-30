@@ -14,7 +14,8 @@ import com.example.dixit_app.model.entidades.Pictograma
 import java.io.File
 
 
-class PictosFraseRVAdapter: RecyclerView.Adapter<PictosFraseRVAdapter.PictogramaViewHolder>(){
+class PictosFraseRVAdapter:
+    RecyclerView.Adapter<PictosFraseRVAdapter.PictogramaViewHolder>(){
 
     //-----------------------------------
 
@@ -22,7 +23,6 @@ class PictosFraseRVAdapter: RecyclerView.Adapter<PictosFraseRVAdapter.Pictograma
     //El item xml se reutiliza (BottomRecyclerView)
     class PictogramaViewHolder(val itemBinding: ItemPictogramaBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
-
 
     private var imageUri: Uri? = null
 
@@ -43,11 +43,7 @@ class PictosFraseRVAdapter: RecyclerView.Adapter<PictosFraseRVAdapter.Pictograma
     val differBottom = AsyncListDiffer(this, differBottomCallback)
 
 
-
-
-
     //-----------------------------------
-
 
 
     /**Llama a este método siempre que necesita crear una ViewHolder nueva. El método crea y, luego,

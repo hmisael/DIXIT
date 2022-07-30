@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_white"
     android:padding="8dp"
     tools:context=".view.FraseModificarFragment">
 
@@ -13,14 +12,17 @@
         android:id="@+id/rv_topFrase"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:orientation="horizontal"
         tools:listitem="@layout/item_pictograma_selected" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_bottomFrase"
         android:layout_width="398dp"
+
         android:layout_height="417dp"
         android:layout_below="@+id/rv_topFrase"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="12dp"
+        tools:listitem="@layout/item_pictograma" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"

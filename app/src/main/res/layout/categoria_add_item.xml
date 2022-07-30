@@ -10,7 +10,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_width="match_parent"
-        android:background="@drawable/shape"
+
         android:layout_height="wrap_content">
 
         <TextView
@@ -19,19 +19,17 @@
             android:textStyle="bold"
             android:textSize="19sp"
             android:padding="10dp"
-            android:textColor="@color/white"
-            android:background="@color/primaryColor"
+
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <EditText
             android:id="@+id/et_categoria"
-            android:hint="Nombre categoría"
-            android:background="@drawable/shape"
+            android:hint="Ingrese título"
             android:padding="15dp"
             android:textSize="18sp"
-            android:textStyle="bold"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"

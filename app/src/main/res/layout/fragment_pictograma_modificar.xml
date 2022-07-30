@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_white"
     tools:context=".view.CategoriaDetalleFragment">
 
     <androidx.cardview.widget.CardView
@@ -65,8 +64,7 @@
             android:clickable="true"
             app:borderWidth="1dp"
             android:src="@drawable/ic_done"
-            android:background="@color/colorPrimary"
-            android:tintMode="@color/colorPrimary"
+
 
             android:contentDescription="@string/guardar_los_cambios"
             android:focusable="true" />

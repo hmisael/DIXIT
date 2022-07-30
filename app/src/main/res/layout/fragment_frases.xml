@@ -5,7 +5,6 @@
     android:id="@+id/frases_frag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_white"
     android:padding="8dp"
     tools:context=".view.FrasesFragment">
 
@@ -25,9 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
-        android:background="@color/white"
-        android:elevation="10dp"
-        app:cardCornerRadius="10dp">
+
+        android:elevation="5dp"
+        app:cardCornerRadius="5dp">
 
         <TextView
             android:id="@+id/tv_sin_frases"
@@ -39,9 +38,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="284dp"
             android:gravity="center"
+
             android:padding="60dp"
             android:text="@string/sin_elementos"
-            android:textColor="@color/black"
             android:textSize="18sp" />
 
     </androidx.cardview.widget.CardView>
