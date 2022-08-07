@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    tools:context=".view.CategoriaNuevaFragment">
+    tools:context=".ui.categorias.CategoriaNuevaFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -29,14 +29,14 @@
             android:id="@+id/categoriaTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="..."
             android:background="@android:color/transparent"
             android:ems="10"
             android:hint="@string/ingrese_t_tulo_de_la_categor_a"
             android:inputType="text"
-            android:textColor="@color/black"
+            android:textColor="@color/primaryTextColor"
             android:textColorHint="@color/black"
-            android:textSize="20sp"
-            android:autofillHints="..." />
+            android:textSize="20sp" />
 
     </androidx.cardview.widget.CardView>
 

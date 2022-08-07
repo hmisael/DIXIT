@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    tools:context=".view.CategoriaNuevaFragment">
+    tools:context=".ui.categorias.CategoriaNuevaFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewPictograma1"
@@ -17,7 +17,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/white"
+
         app:cardCornerRadius="5dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,15 +34,12 @@
         <EditText
             android:id="@+id/pictogramaTxt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="200"
-            android:background="@android:color/transparent"
-            android:ems="10"
+
             android:hint="@string/ingrese_nombre_de_pictograma"
             android:inputType="text"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:autofillHints="..." />
 
         <ImageView

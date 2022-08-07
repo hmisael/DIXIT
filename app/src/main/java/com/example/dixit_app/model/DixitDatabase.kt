@@ -5,11 +5,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.dixit1.model.entidades.relaciones.FrasesConPictogramas
 import com.example.dixit_app.model.entidades.*
 
 
-@Database(entities = [Categoria::class, Pictograma::class, Rutina::class, Imagen::class, Frase::class, FrasePictogramaRC::class], version = 1)
+@Database(entities =
+        [Categoria::class, Pictograma::class,
+        Rutina::class,  RutinaPictogramaRC::class,
+        Frase::class, FrasePictogramaRC::class,
+        Pregunta:: class, PreguntaPictogramaRC::class,
+        Respuesta::class, RespuestaPictogramaRC::class],
+        version = 1)
 
 abstract class DixitDatabase : RoomDatabase() {
 

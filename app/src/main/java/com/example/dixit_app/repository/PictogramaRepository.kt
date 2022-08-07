@@ -10,8 +10,23 @@ class PictogramaRepository (private val db: DixitDatabase) {
     fun getPictogramasByCategoria(nombreCategoria: String) = db.getDixitDao().getPictogramasByCategoria(nombreCategoria)
 
     fun getPictogramasByFrase(nombreFrase: String) = db.getDixitDao().getPictogramasByFrase(nombreFrase)
+    fun getPictogramasByRutina(nombreRutina: String) = db.getDixitDao().getPictogramasByRutina(nombreRutina)
+
+
+    fun getPictogramasByPregunta(nombrePregunta: String) =
+        db.getDixitDao().getPictogramasByPregunta(nombrePregunta)
+
+    fun getPictogramasByRespuesta(nombrePregunta: String) =
+        db.getDixitDao().getPictogramasByRespuesta(nombrePregunta)
+
+    fun getRespuesta(nombrePregunta: String) =
+        db.getDixitDao().searchRespuesta(nombrePregunta)
+
 
     fun getAllPictogramas() = db.getDixitDao().getAllPictogramas()
     fun searchPictograma(query: String?) = db.getDixitDao().searchPictograma(query)
+
+
+
 
 }

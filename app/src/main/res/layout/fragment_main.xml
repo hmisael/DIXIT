@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.MainFragment">
+    tools:context=".ui.MainFragment">
 
 
     <LinearLayout
@@ -57,9 +57,10 @@
                         android:id="@+id/txtCategorias"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Categorias"
+                        android:text="@string/categorias"
                         android:textAlignment="center"
-                        android:textSize="15sp"/>
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -95,8 +96,9 @@
                         android:id="@+id/txtFrases"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Frases"
+                        android:text="@string/frases"
                         android:textAlignment="center"
+                        android:textColor="@color/primaryTextColor"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -133,9 +135,10 @@
                         android:id="@+id/txtPreguntas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Preguntas"
+                        android:text="@string/preguntas"
                         android:textAlignment="center"
-                        android:textSize="15sp"/>
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -171,9 +174,10 @@
                         android:id="@+id/txtRutinas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rutinas"
+                        android:text="@string/rutinas"
                         android:textAlignment="center"
-                        android:textSize="15sp"/>
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 

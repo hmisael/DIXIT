@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".ui.preguntas.PreguntaDetalleFragment">
+
+
+    <TextView
+        android:id="@+id/txtTituloPregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_de_pregunta"
+        android:textSize="20sp"
+        android:textColor="@color/primaryTextColor" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pictogramasPreguntaRV"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        tools:listitem="@layout/item_pictograma"
+        android:layout_below="@id/txtTituloPregunta">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <TextView
+        android:id="@+id/txtTituloRespuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pictogramasPreguntaRV"
+        android:text="@string/titulo_de_respuesta"
+        android:textSize="20sp"
+        android:textColor="@color/primaryTextColor" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pictogramasRespuestaRV"
+        android:layout_width="398dp"
+        android:layout_height="317dp"
+        android:layout_below="@id/txtTituloRespuesta"
+        tools:listitem="@layout/item_pictograma"
+        android:layout_marginTop="12dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView30"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:background="@color/white"
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp">
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabModificarPregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/agregar_pictograma"
+        android:src="@android:drawable/ic_menu_edit"
+        app:rippleColor="@color/secondaryDarkColor" />
+
+
+</RelativeLayout>

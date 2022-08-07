@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CategoriaDetalleFragment">
+    tools:context=".ui.categorias.CategoriaDetalleFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvPictogramaModificar"
@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:ems="10"
+                android:contentDescription="@string/elija_la_imagen_a_guardar"
                 android:hint="@string/ingrese_nombre_de_pictograma"
                 android:inputType="text"
                 android:textColor="@color/black"
@@ -51,23 +52,22 @@
         </LinearLayout>
 
 
-
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_done_modPictograma"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="32dp"
-            android:layout_gravity="bottom|end"
 
             android:clickable="true"
-            app:borderWidth="1dp"
-            android:src="@drawable/ic_done"
-
-
             android:contentDescription="@string/guardar_los_cambios"
-            android:focusable="true" />
+            android:focusable="true"
+
+
+            android:src="@drawable/ic_done"
+            app:borderWidth="1dp"
+            app:rippleColor="@color/secondaryDarkColor" />
 
     </androidx.cardview.widget.CardView>
 

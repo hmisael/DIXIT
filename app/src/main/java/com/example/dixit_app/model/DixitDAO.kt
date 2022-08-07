@@ -3,16 +3,19 @@ package com.example.dixit_app.model
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.dixit1.model.entidades.relaciones.FrasesConPictogramas
-import com.example.dixit_app.model.entidades.Categoria
-import com.example.dixit_app.model.entidades.Frase
-import com.example.dixit_app.model.entidades.Pictograma
-import com.example.dixit_app.model.entidades.Rutina
+import com.example.dixit_app.model.entidades.*
+import com.example.dixit_app.model.entidades.relaciones.FrasesConPictogramas
+import com.example.dixit_app.model.entidades.relaciones.PreguntasConPictogramas
+import com.example.dixit_app.model.entidades.relaciones.RespuestasConPictogramas
+import com.example.dixit_app.model.entidades.relaciones.RutinasConPictogramas
 
 
 @Dao
 interface DixitDAO{
-    //PICTOGRAMA
+
+    /**
+     * PICTOGRAMAS
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPictograma(pictograma: Pictograma)
     @Delete
@@ -20,15 +23,14 @@ interface DixitDAO{
     @Update
     suspend fun updatePictograma(pictograma: Pictograma)
 
-    @Query("SELECT * FROM pictograma WHERE nombreCategoria = :nombreCategoria")
-    fun getPictogramasByCategoria(nombreCategoria: String?): LiveData<List<Pictograma>>
-
+    //Obtener todos los Pictogrmas
     @Query("SELECT * FROM pictograma")
     fun getAllPictogramas(): LiveData<List<Pictograma>>
 
     //DEBE SER Pictograma con nombreCategoria determinado dentro de ese acceso
     @Query("SELECT * FROM pictograma WHERE nombrePictograma LIKE :query")
     fun searchPictograma(query: String?): LiveData<List<Pictograma>>
+
     /*
     @Query("SELECT * FROM pictograma where idCategoria = :id")
     fun getPictogramasByCategoria(id: Long): LiveData<List<Pictograma>>
@@ -38,11 +40,7 @@ interface DixitDAO{
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
      fun insertAllPictogramas(vararg pictogramas: Pictograma): List<Long>
-
-
-
-
-*/
+    */
 
     /**
      * CATEGORIAS
@@ -57,38 +55,35 @@ interface DixitDAO{
     @Delete
     suspend fun deleteCategoria(categoria: Categoria)
 
-     /*
-    @Query("SELECT * FROM categoria ORDER BY idcategoria DESC LIMIT 1")
-    fun getCategoria(): Categoria?
+    //Obtener Pictogramas de una determinada Categoría
+    @Query("SELECT * FROM pictograma WHERE nombreCategoria = :nombreCategoria")
+    fun getPictogramasByCategoria(nombreCategoria: String?): LiveData<List<Pictograma>>
 
-
-     @Query("DELETE FROM categoria")
-     fun deleteAllCategorias()
-
-   @Query("SELECT * FROM categoria WHERE idcategoria = :id")
-    fun getCategoriaById(id: Long): LiveData<Categoria>
-
-*/
-    /**
-     * Selecciona y devuelve todas las filas en una tabla,
-     * en orden alfabetico descendente
-     */
     @Query("SELECT * FROM categoria")
     fun getAllCategorias(): LiveData<List<Categoria>>
 
     @Query("SELECT * FROM categoria WHERE nombreCategoria LIKE :query")
     fun searchCategoria(query: String?): LiveData<List<Categoria>>
 
+    /*
+   @Query("SELECT * FROM categoria ORDER BY idcategoria DESC LIMIT 1")
+   fun getCategoria(): Categoria?
 
 
+    @Query("DELETE FROM categoria")
+    fun deleteAllCategorias()
 
+   @Query("SELECT * FROM categoria WHERE idcategoria = :id")
+   fun getCategoriaById(id: Long): LiveData<Categoria>
+
+*/
 
     /**
      * RUTINAS
      */
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertRutina(rutina: Rutina)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertRutina(rutina: Rutina) : Long
 
     @Update
     suspend fun updateRutina(rutina: Rutina)
@@ -96,20 +91,35 @@ interface DixitDAO{
     @Delete
     suspend fun deleteRutina(rutina: Rutina)
 
-
     @Query("SELECT * FROM rutina")
     fun getAllRutinas(): LiveData<List<Rutina>>
 
     @Query("SELECT * FROM rutina WHERE nombreRutina LIKE :query")
     fun searchRutina(query: String?): LiveData<List<Rutina>>
 
+    //Obtener el id según el nombre de la Rutina
+    @Query("SELECT idRutina FROM rutina WHERE nombreRutina LIKE :query")
+    fun getIdRutinaByNombre(query: String?): Long
+
+    @Transaction
+    @Query("SELECT * FROM rutina WHERE nombreRutina = :nombreRutina")
+    fun getRutinaPictogramas(nombreRutina: String?): LiveData<List<RutinasConPictogramas>>
+
+    @Transaction
+    @Query("SELECT * FROM rutina WHERE nombreRutina = :nombreRutina")
+    fun getPictogramasByRutina(nombreRutina: String?): LiveData<List<RutinasConPictogramas>>
+
+    //Agregar Entidad RutinaPictogramaRC (ref. cruz. = par de rutina.id y pictograma)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPictogramasRutina(rutinasPictogramas: RutinaPictogramaRC)
 
     /**
      * FRASES
      */
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFrase(frase: Frase)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    //suspend fun insertFrase(frases: Frase)
+    suspend fun insertFrase(frase: Frase) : Long
 
     @Update
     suspend fun updateFrase(frase: Frase)
@@ -117,65 +127,89 @@ interface DixitDAO{
     @Delete
     suspend fun deleteFrase(frase: Frase)
 
-
     @Query("SELECT * FROM frase")
     fun getAllFrases(): LiveData<List<Frase>>
+
+    //Obtener el id según el nombre de la frases
+    @Query("SELECT idFrase FROM frase WHERE nombreFrase = :query")
+    fun getIdFraseByNombre(query: String?): LiveData<Long>
 
     @Query("SELECT * FROM frase WHERE nombreFrase LIKE :query")
     fun searchFrase(query: String?): LiveData<List<Frase>>
 
+    //Agregar Entidad FrasePictogramaRC (ref. cruz. = par de frases.id y pictograma)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPictogramasFrase(frasesPictogramas: FrasePictogramaRC)
 
+    //Obtener pictogramas de Frase (es idéntico al método getPictogramasByFrase
+    //solo que se usan en contextos distintos (repositorio, viewmodel, etc)
+    @Transaction
+    @Query("SELECT * FROM frase WHERE nombreFrase = :nombreFrase")
+    fun getFrasePictogramas(nombreFrase: String?): LiveData<List<FrasesConPictogramas>>
 
     //Bien, acá uso RC. Ver que Frase y Pictograma es una relación N-M
     //La RC es reversible. Me interesa obtener una lista de Pictogramas...
     // ...que pertenecen a una Frase en concreto (por nombreFrase)
+    //Conclusión: Esta Query devuelve una lista de Pictogramas
     @Transaction
     @Query("SELECT * FROM frase WHERE nombreFrase = :nombreFrase")
     fun getPictogramasByFrase(nombreFrase: String?): LiveData<List<FrasesConPictogramas>>
 
+    /**
+     * PREGUNTAS
+     */
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertPregunta(pregunta: Pregunta) : Long
 
-    /*
+    @Update
+    suspend fun updatePregunta(pregunta: Pregunta)
+
+    @Delete
+    suspend fun deletePregunta(pregunta: Pregunta)
+
+    @Query("SELECT * FROM pregunta WHERE nombrePregunta LIKE :query")
+    fun searchPregunta(query: String?): LiveData<List<Pregunta>>
+
+    @Query("SELECT * FROM pregunta")
+    fun getAllPreguntas(): LiveData<List<Pregunta>>
+
+    //Obtener el id según el nombre de la pregunta
+    @Query("SELECT idPregunta FROM pregunta WHERE nombrePregunta = :query")
+    fun getIdPreguntaByNombre(query: String?): LiveData<Long>
+
     @Transaction
-    @Query("SELECT * FROM rutina WHERE idRutina = :idRutina")
-    //fun getRutinasConPictogramas(): List<RutinasConPictogramas>
-    suspend fun getPictogramasDeRutinas(idRutina: Int): List<RutinasConPictogramas>
+    @Query("SELECT * FROM pregunta WHERE nombrePregunta = :nombrePregunta")
+    fun getPictogramasByPregunta(nombrePregunta: String?): LiveData<List<PreguntasConPictogramas>>
+
+    //Agregar Entidad PreguntaPictogramaRC (ref. cruz. = par de frases.id y pictograma)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPictogramasPregunta(preguntasPictogramas: PreguntaPictogramaRC)
+
+    /**
+     * RESPUESTAS
+     */
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertRespuesta(respuesta: Respuesta) : Long
+
+    @Update
+    suspend fun updateRespuesta(respuesta: Respuesta)
+
+    @Delete
+    suspend fun deleteRespuesta(respuesta: Respuesta)
+
+    @Query("SELECT * FROM respuesta WHERE nombrePregunta LIKE :query")
+    fun searchRespuesta(query: String?): LiveData<List<Respuesta>>
 
     @Transaction
-    @Query("SELECT * FROM pictograma")
-    suspend fun getPictogramasConRutinas(): List<PictogramasConRutinas>
-
-    //RELACION 1 a m (categoria y pictogramas)
+    @Query("SELECT * FROM respuesta WHERE nombrePregunta = :nombrePregunta")
+    fun getPictogramasByRespuesta(nombrePregunta: String?): LiveData<List<RespuestasConPictogramas>>
 
 
+
+    //Agregar Entidad PreguntaPictogramaRC (ref. cruz. = par de frases.id y pictograma)
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun agregarPictograma(pictograma: Pictograma)
-
-    @Transaction
-    @Query("SELECT * FROM categoria WHERE idCategoria = :idCategoria")
-    suspend fun getCategoriaConPictogramas(idCategoria: Int): List<CategoriaConPictogramas>
-
-
-    // RELACION n a m (rutinas y pictogramas)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun agregarRutina(rutina: Rutina)
-
-    @Transaction //me interesan los pictogramas de una rutina particular
-    @Query("SELECT * FROM rutina WHERE idRutina = :idRutina")
-    suspend fun getPictogramasDeRutina(idRutina: Int): List<RutinasConPictogramas>
-
-    //RELACION n a m (frases y pictogramas)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun agregarFrase(frase: Frase)
-
-    @Transaction //me interesan los pictogramas de una frase particular
-    @Query("SELECT * FROM frase WHERE idFrase = :idFrase")
-    suspend fun getPictogramasDeFrase(idFrase: Int): List<FrasesConPictogramas>
-
-
-*/
-
+    suspend fun insertPictogramasRespuesta(respuestasPictogramas: RespuestaPictogramaRC)
 
 }

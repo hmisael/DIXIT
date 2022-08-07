@@ -1,4 +1,4 @@
-package com.example.dixit1.model.entidades.relaciones
+package com.example.dixit_app.model.entidades.relaciones
 
 //data
 class CategoriaConPictogramas

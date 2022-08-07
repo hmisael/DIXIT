@@ -3,16 +3,79 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_preguntas"
-    app:startDestination="@id/fragmentRutina1">
+    app:startDestination="@id/preguntasFragment">
 
     <fragment
         android:id="@+id/preguntasFragment"
-        android:name="com.example.dixit_app.view.PreguntasFragment"
-        android:label="fragment_preguntas"
-        tools:layout="@layout/fragment_preguntas" />
+        android:name="com.example.dixit_app.ui.preguntas.PreguntasFragment"
+        android:label="Preguntas"
+        tools:layout="@layout/fragment_preguntas" >
+        <action
+            android:id="@+id/action_preguntasFragment_to_preguntaDetalleFragment"
+            app:destination="@id/preguntaDetalleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/preguntasFragment" />
+    </fragment>
+
     <fragment
-        android:id="@+id/fragmentRutina1"
-        android:name="com.example.dixit_app.view.FragmentRutina1"
-        android:label="fragment_rutina1"
-        tools:layout="@layout/fragment_rutina1" />
+        android:id="@+id/preguntaDetalleFragment"
+        android:name="com.example.dixit_app.ui.preguntas.PreguntaDetalleFragment"
+        android:label="Detalle de Pregunta"
+        tools:layout="@layout/fragment_pregunta_detalle">
+        <action
+            android:id="@+id/action_preguntaDetalleFragment_to_preguntasFragment"
+            app:destination="@id/preguntasFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/preguntasFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="pregunta"
+            app:argType="com.example.dixit_app.model.entidades.Pregunta"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/action_preguntaDetalleFragment_to_preguntaModificarFragment"
+            app:destination="@id/preguntaModificarFragment"
+            app:popUpTo="@id/preguntasFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/preguntaModificarFragment"
+        android:name="com.example.dixit_app.ui.preguntas.PreguntaModificarFragment"
+        android:label="Modificar Pregunta"
+        tools:layout="@layout/fragment_pregunta_modificar">
+        <argument
+            android:name="pregunta"
+            app:argType="com.example.dixit_app.model.entidades.Pregunta"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/action_preguntaModificarFragment_to_respuestaModificarFragment"
+            app:destination="@id/respuestaModificarFragment"
+            app:popUpTo="@id/preguntasFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/respuestaModificarFragment"
+        android:name="com.example.dixit_app.ui.preguntas.RespuestaModificarFragment"
+        android:label="Modificar Respuesta"
+        tools:layout="@layout/fragment_respuesta_modificar">
+
+        <argument
+            android:name="pregunta"
+            app:argType="com.example.dixit_app.model.entidades.Pregunta"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/action_respuestaModificarFragment_to_preguntasFragment"
+            app:destination="@id/preguntasFragment"
+            app:popUpTo="@id/preguntasFragment" />
+    </fragment>
 </navigation>

@@ -4,62 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:padding="8dp"
-    tools:context=".view.FraseDetalleFragment">
+    tools:context=".ui.frases.FraseDetalleFragment">
 
-
+    <TextView
+        android:id="@+id/txtTituloFrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_de_frase"
+        android:textSize="24sp"
+        android:visibility="gone"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaPictogramasRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:visibility="gone"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_below="@id/txtTituloFrase"
+        android:visibility="gone">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_below="@id/listaPictogramasRecyclerView"
-        android:layout_height="100dp"
-        android:visibility="gone"
-        >
-
-    </com.google.android.material.chip.ChipGroup>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:background="@color/white"
-        android:elevation="10dp"
-        app:cardCornerRadius="10dp">
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/imageErrorView"
+            android:layout_width="@dimen/error_image_size"
+            android:layout_height="@dimen/error_image_size"
+            android:src="@drawable/ic_baseline_error_outline_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tv_sin_pictogramas"
-            android:layout_width="match_parent"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="284dp"
-            android:gravity="center"
-            android:padding="50dp"
-            android:text="Editar Frase desde el botón inferior"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:text="@string/frase_sin_pictogramas"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintEnd_toEndOf="@id/imageErrorView"
+            app:layout_constraintStart_toStartOf="@id/imageErrorView"
+            app:layout_constraintTop_toBottomOf="@id/imageErrorView" />
 
-
-    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -73,7 +68,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/agregar_pictograma"
-        android:src="@android:drawable/ic_menu_edit" />
-
+        android:src="@android:drawable/ic_menu_edit"
+        app:rippleColor="@color/secondaryDarkColor" />
 
 </RelativeLayout>

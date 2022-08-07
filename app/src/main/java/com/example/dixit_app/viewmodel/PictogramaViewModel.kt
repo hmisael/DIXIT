@@ -8,14 +8,25 @@ import com.example.dixit_app.repository.PictogramaRepository
 import kotlinx.coroutines.launch
 import java.io.File
 
-class PictogramaViewModel(app: Application,
-                          private val pictogramaRepository: PictogramaRepository
-) : AndroidViewModel(app) {
+class PictogramaViewModel(
+    app: Application, private val pictogramaRepository: PictogramaRepository
+    ) : AndroidViewModel(app) {
+
+
+
+    //fun getRespuesta(nombrePregunta: String) = pictogramaRepository.getRespuesta(nombrePregunta)
+
+
+    fun getRespuesta(nombrePregunta: String) =
+        viewModelScope.launch {
+            pictogramaRepository.getRespuesta(nombrePregunta)
+        }
 
     fun insertPictograma(pictograma: Pictograma) =
             viewModelScope.launch {
                 pictogramaRepository.insertPictograma(pictograma)
             }
+
 
     fun deletePictograma(pictograma: Pictograma) =
             viewModelScope.launch {
@@ -31,6 +42,16 @@ class PictogramaViewModel(app: Application,
 
     fun getPictogramasByFrase(nombreFrase: String) = pictogramaRepository.getPictogramasByFrase(nombreFrase)
 
+    fun getPictogramasByRutina(nombreRutina: String) = pictogramaRepository.getPictogramasByRutina(nombreRutina)
+
+
+    fun getPictogramasByPregunta(nombrePregunta: String) =
+        pictogramaRepository.getPictogramasByPregunta(nombrePregunta)
+
+    fun getPictogramasByRespuesta(nombrePregunta: String) =
+        pictogramaRepository.getPictogramasByRespuesta(nombrePregunta)
+
+
 
     fun getAllPictogramas() = pictogramaRepository.getAllPictogramas()
 
@@ -38,6 +59,7 @@ class PictogramaViewModel(app: Application,
 
     fun searchPictograma(query: String?) =
             pictogramaRepository.searchPictograma(query)
+
 
 }
 

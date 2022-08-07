@@ -9,6 +9,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Rutina(
     @PrimaryKey(autoGenerate = true)
-    var idRutina: Long=0,
+    var idRutina: Long = 0L,
     var nombreRutina: String
 ): Parcelable

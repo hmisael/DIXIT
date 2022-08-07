@@ -1,9 +1,9 @@
 package com.example.dixit_app.model.entidades
 
-/*@Entity(primaryKeys = ["idRutina", "idPictograma"])
-data */
-class RutinaPictogramaRC/*(
-    //@ColumnInfo(index = true) var idRutina: Int
-    var idRutina: Int,
-    var idPictograma: Int
-)*/
+import androidx.room.Entity
+
+@Entity(primaryKeys = ["idRutina", "idPictograma"])
+data class RutinaPictogramaRC(
+    var idRutina: Long,
+    var idPictograma: Long
+)

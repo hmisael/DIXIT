@@ -9,6 +9,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Frase(
     @PrimaryKey(autoGenerate = true)
-    var idFrase: Long = 0,
+    var idFrase: Long = 0L,
     var nombreFrase: String
 ): Parcelable
