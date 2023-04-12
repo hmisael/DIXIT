@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".ui.preguntas.PreguntasFragment">
+    android:background="@color/secondaryLightColor"
+    tools:context=".view.preguntas.PreguntasFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaPreguntasRecyclerView"
@@ -39,7 +40,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/no_hay_preguntas_creadas"
-            android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/text_size_normal"
             app:layout_constraintEnd_toEndOf="@id/imageWarningPreguntas"
             app:layout_constraintStart_toStartOf="@id/imageWarningPreguntas"
@@ -58,6 +58,6 @@
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/agregar_una_nueva_pregunta"
         android:src="@drawable/ic_add"
-        app:rippleColor="@color/secondaryDarkColor2" />
+        />
 
 </RelativeLayout>

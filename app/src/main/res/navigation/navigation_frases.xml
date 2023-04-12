@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/frasesFragment"
-        android:name="com.example.dixit_app.ui.frases.FrasesFragment"
+        android:name="com.example.dixit_app.view.frases.FrasesFragment"
         android:label="Frases"
         tools:layout="@layout/fragment_frases" >
         <action
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/fraseDetalleFragment"
-        android:name="com.example.dixit_app.ui.frases.FraseDetalleFragment"
+        android:name="com.example.dixit_app.view.frases.FraseDetalleFragment"
         android:label="Detalle de Frase"
         tools:layout="@layout/fragment_frase_detalle" >
         <action
@@ -36,27 +36,29 @@
 
         <argument
             android:name="frase"
-            app:argType="com.example.dixit_app.model.entidades.Frase"
+            app:argType="com.example.dixit_app.model.entities.Frase"
             app:nullable="true" />
         <action
             android:id="@+id/action_fraseDetalleFragment_to_fraseModificarFragment"
             app:destination="@id/fraseModificarFragment"
-            app:popUpToInclusive="false" />
+            app:popUpTo="@id/fraseModificarFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/fraseModificarFragment"
-        android:name="com.example.dixit_app.ui.frases.FraseModificarFragment"
+        android:name="com.example.dixit_app.view.frases.FraseModificarFragment"
         android:label="Modificar Frase"
         tools:layout="@layout/fragment_frase_modificar">
         <argument
             android:name="frase"
-            app:argType="com.example.dixit_app.model.entidades.Frase"
+            app:argType="com.example.dixit_app.model.entities.Frase"
             app:nullable="true" />
         <action
             android:id="@+id/action_fraseModificarFragment_to_frasesFragment"
             app:destination="@id/frasesFragment"
-            app:popUpTo="@id/frasesFragment" />
+            app:popUpTo="@id/frasesFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

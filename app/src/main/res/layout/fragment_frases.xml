@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".ui.frases.FrasesFragment">
+    android:background="@color/secondaryLightColor"
+    tools:context=".view.frases.FrasesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaFrasesRecyclerView"
@@ -16,9 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -39,7 +38,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/no_hay_frases_creadas"
-            android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/text_size_normal"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -57,7 +55,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/agregar_una_nueva_categor_a"
-        android:src="@drawable/ic_add"
-        app:rippleColor="@color/secondaryDarkColor2" />
+        android:src="@drawable/ic_add"/>
 
 </RelativeLayout>

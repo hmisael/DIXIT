@@ -5,91 +5,75 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp"
-    tools:context=".ui.frases.FraseModificarFragment">
-
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pictogramas_de_la_frase"
-        android:textColor="@color/primaryTextColor" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_topFrase"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal"
-        android:scrollbars="horizontal"
-        tools:listitem="@layout/item_pictograma"
-        android:layout_below="@id/textView9">
-    </androidx.recyclerview.widget.RecyclerView>
-
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rv_topFrase"
-        android:text="@string/elija_los_pictogramas_a_agregar"
-        android:textColor="@color/primaryTextColor" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_bottomFrase"
-        android:layout_width="match_parent"
-        android:layout_below="@id/textView10"
-        android:scrollbars="vertical"
-        android:layout_height="517dp"
-        android:layout_marginTop="12dp"
-        tools:listitem="@layout/item_pictograma" >
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:visibility="gone"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:background="@color/white"
-        android:elevation="10dp"
-        app:cardCornerRadius="10dp">
+        android:background="@color/secondaryLightColor"
+        android:padding="8dp"
+        tools:context=".view.frases.FraseModificarFragment">
 
         <TextView
-            android:id="@+id/tv_sin_pictogramas"
+            android:id="@+id/textViewModFrase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_normal"
+            android:text="@string/pictogramas_de_la_frase" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_topFrase"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:scrollbars="horizontal"
+            tools:listitem="@layout/item_pictograma"
+            android:layout_below="@id/textViewModFrase">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="284dp"
-            android:gravity="center"
-            android:padding="50dp"
-            android:text="@string/agregar_pictogramas_desde_el_bot_n_inferior"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-    </androidx.cardview.widget.CardView>
+            android:queryHint="@string/elija_los_pictogramas_a_agregar"
+            android:iconifiedByDefault="false"
+            android:layout_below="@id/rv_topFrase"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            app:defaultQueryHint="@string/elija_los_pictogramas_a_agregar"
+            android:background="@drawable/searchview_background"
+            />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_bottomFrase"
+            android:layout_width="match_parent"
+            android:layout_below="@id/searchView"
+            android:scrollbars="vertical"
+            android:layout_height="517dp"
+            tools:listitem="@layout/item_pictograma" >
+        </androidx.recyclerview.widget.RecyclerView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_done"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:contentDescription="@string/agregar_pictograma"
-        android:src="@drawable/ic_done"
-        app:rippleColor="@color/secondaryDarkColor" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewModFrase"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp">
 
+            <TextView
+                android:id="@+id/tv_sin_pictogramas_mod_frase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="284dp"
+                android:gravity="center"
+                android:padding="50dp"
+                android:text="@string/agregar_pictogramas_desde_el_bot_n_inferior"
+                android:textSize="18sp" />
+        </androidx.cardview.widget.CardView>
 
-</RelativeLayout>
+    </RelativeLayout>
 </ScrollView>

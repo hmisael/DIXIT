@@ -1,18 +1,12 @@
 package com.example.dixit_app.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.dixit_app.model.entidades.Frase
-import com.example.dixit_app.model.entidades.FrasePictogramaRC
-import com.example.dixit_app.repository.FraseRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import com.example.dixit_app.model.entities.Frase
+import com.example.dixit_app.model.entities.FrasePictogramaRC
+import com.example.dixit_app.model.repository.FraseRepository
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class FraseViewModel(app: Application, private val fraseRepository: FraseRepository)
         : AndroidViewModel(app) {
@@ -47,4 +41,10 @@ class FraseViewModel(app: Application, private val fraseRepository: FraseReposit
 
     //obtener id de una Frase según su nombre
     fun getIdFraseByNombre(nombre: String) = fraseRepository.getIdFraseByNombre(nombre)
+
+    fun searchPictograma(query: String?) =
+        fraseRepository.searchPictograma(query)
+
+
+
 }

@@ -19,7 +19,6 @@
             android:layout_gravity="center"
             android:padding="10dp"
             android:text="@string/ingrese_t_tulo_de_la_categor_a"
-            android:textColor="@color/primaryTextColor"
             android:textSize="19sp"
             android:textStyle="bold" />
 
@@ -34,9 +33,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            />
-
+            android:layout_marginBottom="5dp" />
 
     </LinearLayout>
 

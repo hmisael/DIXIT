@@ -3,11 +3,11 @@ package com.example.dixit_app.model
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.dixit_app.model.entidades.*
-import com.example.dixit_app.model.entidades.relaciones.FrasesConPictogramas
-import com.example.dixit_app.model.entidades.relaciones.PreguntasConPictogramas
-import com.example.dixit_app.model.entidades.relaciones.RespuestasConPictogramas
-import com.example.dixit_app.model.entidades.relaciones.RutinasConPictogramas
+import com.example.dixit_app.model.entities.*
+import com.example.dixit_app.model.entities.relaciones.FrasesConPictogramas
+import com.example.dixit_app.model.entities.relaciones.PreguntasConPictogramas
+import com.example.dixit_app.model.entities.relaciones.RespuestasConPictogramas
+import com.example.dixit_app.model.entities.relaciones.RutinasConPictogramas
 
 
 @Dao
@@ -154,6 +154,8 @@ interface DixitDAO{
     @Transaction
     @Query("SELECT * FROM frase WHERE nombreFrase = :nombreFrase")
     fun getPictogramasByFrase(nombreFrase: String?): LiveData<List<FrasesConPictogramas>>
+
+
 
     /**
      * PREGUNTAS

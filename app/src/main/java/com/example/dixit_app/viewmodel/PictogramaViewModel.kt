@@ -3,19 +3,14 @@ package com.example.dixit_app.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.dixit_app.model.entidades.Pictograma
-import com.example.dixit_app.repository.PictogramaRepository
+import com.example.dixit_app.model.entities.Pictograma
+import com.example.dixit_app.model.repository.PictogramaRepository
 import kotlinx.coroutines.launch
-import java.io.File
 
-class PictogramaViewModel(
-    app: Application, private val pictogramaRepository: PictogramaRepository
-    ) : AndroidViewModel(app) {
-
-
+class PictogramaViewModel(app: Application, private val pictogramaRepository: PictogramaRepository)
+    : AndroidViewModel(app) {
 
     //fun getRespuesta(nombrePregunta: String) = pictogramaRepository.getRespuesta(nombrePregunta)
-
 
     fun getRespuesta(nombrePregunta: String) =
         viewModelScope.launch {
@@ -51,15 +46,10 @@ class PictogramaViewModel(
     fun getPictogramasByRespuesta(nombrePregunta: String) =
         pictogramaRepository.getPictogramasByRespuesta(nombrePregunta)
 
-
-
     fun getAllPictogramas() = pictogramaRepository.getAllPictogramas()
-
-
 
     fun searchPictograma(query: String?) =
             pictogramaRepository.searchPictograma(query)
-
 
 }
 

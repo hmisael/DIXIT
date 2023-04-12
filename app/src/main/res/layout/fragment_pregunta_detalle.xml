@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".ui.preguntas.PreguntaDetalleFragment">
+    android:background="@color/secondaryLightColor"
+    tools:context=".view.preguntas.PreguntaDetalleFragment">
 
 
     <TextView
@@ -14,12 +15,12 @@
         android:layout_height="wrap_content"
         android:text="@string/titulo_de_pregunta"
         android:textSize="20sp"
-        android:textColor="@color/primaryTextColor" />
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pictogramasPreguntaRV"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="140dp"
         android:orientation="horizontal"
         tools:listitem="@layout/item_pictograma"
         android:layout_below="@id/txtTituloPregunta">
@@ -33,8 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/pictogramasPreguntaRV"
         android:text="@string/titulo_de_respuesta"
-        android:textSize="20sp"
-        android:textColor="@color/primaryTextColor" />
+        android:textSize="20sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pictogramasRespuestaRV"
@@ -43,11 +43,7 @@
         android:layout_below="@id/txtTituloRespuesta"
         tools:listitem="@layout/item_pictograma"
         android:layout_marginTop="12dp">
-
     </androidx.recyclerview.widget.RecyclerView>
-
-
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView30"
@@ -55,7 +51,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
-        android:background="@color/white"
         android:elevation="10dp"
         app:cardCornerRadius="10dp">
     </androidx.cardview.widget.CardView>
@@ -71,8 +66,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/agregar_pictograma"
-        android:src="@android:drawable/ic_menu_edit"
-        app:rippleColor="@color/secondaryDarkColor" />
+        android:src="@android:drawable/ic_menu_edit" />
 
 
 </RelativeLayout>

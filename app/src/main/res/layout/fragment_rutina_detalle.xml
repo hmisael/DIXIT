@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".ui.rutinas.RutinaDetalleFragment">
+    android:background="@color/secondaryLightColor"
+    tools:context=".view.rutinas.RutinaDetalleFragment">
 
     <TextView
         android:id="@+id/txtTituloRutina"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titulo_de_rutina"
-        android:visibility="gone"
-        />
+        android:textSize="@dimen/text_size_normal"
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaPictogramasRutinaRecyclerView"
@@ -28,13 +29,9 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     <ImageView
         android:id="@+id/imageErrorRutinaView"
         android:layout_width="@dimen/error_image_size"
@@ -51,7 +48,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rutina_sin_pictogramas"
-            android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/text_size_normal"
             app:layout_constraintEnd_toEndOf="@+id/imageErrorRutinaView"
             app:layout_constraintStart_toStartOf="@+id/imageErrorRutinaView"
@@ -73,6 +69,6 @@
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/agregar_pictograma"
         android:src="@android:drawable/ic_menu_edit"
-        app:rippleColor="@color/secondaryDarkColor" />
+         />
 
 </RelativeLayout>

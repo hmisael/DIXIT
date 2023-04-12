@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/categoriasFragment"
-        android:name="com.example.dixit_app.ui.categorias.CategoriasFragment"
+        android:name="com.example.dixit_app.view.categorias.CategoriasFragment"
         android:label="Categorías"
         tools:layout="@layout/fragment_categorias" >
         <action
@@ -17,14 +17,12 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
-        <action
-            android:id="@+id/action_categoriasFragment_to_categoriaPredeterminadaFragment"
-            app:destination="@id/categoriaPredeterminadaFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/categoriaDetalleFragment"
-        android:name="com.example.dixit_app.ui.categorias.CategoriaDetalleFragment"
+        android:name="com.example.dixit_app.view.categorias.CategoriaDetalleFragment"
         android:label="Detalle de Categoría"
         tools:layout="@layout/fragment_categoria_detalle" >
         <action
@@ -33,57 +31,70 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/categoriasFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="categoria"
-            app:argType="com.example.dixit_app.model.entidades.Categoria"
+            app:argType="com.example.dixit_app.model.entities.Categoria"
             app:nullable="true" />
         <action
             android:id="@+id/action_categoriaDetalleFragment_to_pictogramaNuevoFragment"
             app:destination="@id/pictogramaNuevoFragment" />
         <action
             android:id="@+id/action_categoriaDetalleFragment_to_pictogramaModificarFragment"
-            app:destination="@id/pictogramaModificarFragment" />
+            app:destination="@id/pictogramaModificarFragment"
+            app:popUpTo="@id/categoriaDetalleFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_categoriasDetalleFragment_to_categoriaPredeterminadaFragment"
+            app:destination="@id/categoriaPredeterminadaFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/pictogramaNuevoFragment"
-        android:name="com.example.dixit_app.ui.pictogramas.PictogramaNuevoFragment"
+        android:name="com.example.dixit_app.view.pictogramas.PictogramaNuevoFragment"
         android:label="Pictograma Nuevo">
 
         <action
             android:id="@+id/action_pictogramaNuevoFragment_to_categoriaDetalleFragment"
-            app:destination="@id/categoriaDetalleFragment" />
+            app:destination="@id/categoriaDetalleFragment"
+            app:popUpTo="@id/categoriaDetalleFragment"
+            app:popUpToInclusive="true" />
         <argument
-            android:name="categoriaNombre"
-            app:argType="string" />
+            android:name="categoria"
+            app:argType="com.example.dixit_app.model.entities.Categoria"
+            app:nullable="true" />
     </fragment>
 
     <fragment
         android:id="@+id/pictogramaModificarFragment"
-        android:name="com.example.dixit_app.ui.pictogramas.PictogramaModificarFragment"
+        android:name="com.example.dixit_app.view.pictogramas.PictogramaModificarFragment"
         android:label="Modificar Pictograma">
         <action
             android:id="@+id/action_pictogramaModificarFragment_to_categoriaDetalleFragment"
             app:destination="@id/categoriaDetalleFragment" />
         <argument
             android:name="pictograma"
-            app:argType="com.example.dixit_app.model.entidades.Pictograma"
+            app:argType="com.example.dixit_app.model.entities.Pictograma"
             app:nullable="true" />
     </fragment>
 
     <fragment
         android:id="@+id/categoriaPredeterminadaFragment"
-        android:name="com.example.dixit_app.ui.categorias.CategoriaPredeterminadaFragment"
+        android:name="com.example.dixit_app.view.categorias.CategoriaPredeterminadaFragment"
         android:label="fragment_categoria_predeterminada"
         tools:layout="@layout/fragment_categoria_predeterminada" >
         <argument
             android:name="categoria"
-            app:argType="com.example.dixit_app.model.entidades.Categoria"
+            app:argType="com.example.dixit_app.model.entities.Categoria"
             app:nullable="true" />
         <action
             android:id="@+id/action_categoriaPredeterminadaFragment_to_categoriaDetalleFragment"
-            app:destination="@id/categoriaDetalleFragment" />
+            app:destination="@id/categoriaDetalleFragment"
+            app:popUpTo="@id/categoriaDetalleFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

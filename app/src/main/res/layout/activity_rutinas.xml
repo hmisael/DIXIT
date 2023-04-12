@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RutinasActivity">
+    tools:context=".view.RutinasActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarRutinas"
         android:layout_width="0dp"
+        android:background="@color/primaryLightColor"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,10 +27,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarRutinas"
-        app:navGraph="@navigation/navigation_rutinas">
-
-    </androidx.fragment.app.FragmentContainerView>
-
-
+        app:navGraph="@navigation/navigation_rutinas"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

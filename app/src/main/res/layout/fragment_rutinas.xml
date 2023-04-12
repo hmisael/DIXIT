@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".ui.rutinas.RutinasFragment">
+    android:background="@color/secondaryLightColor"
+    tools:context=".view.rutinas.RutinasFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaRutinasRecyclerView"
@@ -38,7 +39,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/no_hay_rutinas_guardadas"
-            android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/text_size_normal"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"

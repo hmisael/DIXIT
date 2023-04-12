@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".ui.frases.FraseDetalleFragment">
+    android:background="@color/secondaryLightColor"
+    tools:context=".view.frases.FraseDetalleFragment">
 
     <TextView
         android:id="@+id/txtTituloFrase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titulo_de_frase"
-        android:textSize="24sp"
-        android:visibility="gone"
-        />
+        android:textSize="@dimen/text_size_normal"
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaPictogramasRecyclerView"
@@ -48,7 +48,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/frase_sin_pictogramas"
-            android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/text_size_normal"
             app:layout_constraintEnd_toEndOf="@id/imageErrorView"
             app:layout_constraintStart_toStartOf="@id/imageErrorView"
@@ -68,7 +67,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/agregar_pictograma"
-        android:src="@android:drawable/ic_menu_edit"
-        app:rippleColor="@color/secondaryDarkColor" />
+        android:src="@android:drawable/ic_menu_edit" />
 
 </RelativeLayout>

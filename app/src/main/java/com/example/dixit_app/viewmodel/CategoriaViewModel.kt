@@ -3,8 +3,8 @@ package com.example.dixit_app.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.dixit_app.model.entidades.Categoria
-import com.example.dixit_app.repository.CategoriaRepository
+import com.example.dixit_app.model.entities.Categoria
+import com.example.dixit_app.model.repository.CategoriaRepository
 import kotlinx.coroutines.launch
 
 class CategoriaViewModel (

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:padding="8dp"
-    tools:context=".ui.categorias.CategoriaDetalleFragment">
+    android:background="@color/secondaryLightColor"
+    tools:context=".view.categorias.CategoriaDetalleFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaPictogramasRecyclerView"
@@ -17,14 +17,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-     />
+        tools:listitem="@layout/item_pictograma" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
-        android:background="@color/white"
         android:elevation="10dp"
         app:cardCornerRadius="10dp">
 
@@ -40,12 +39,9 @@
             android:gravity="center"
             android:padding="50dp"
             android:text="@string/agregar_pictogramas_desde_el_bot_n_inferior"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="18sp" />
-
+            android:textSize="@dimen/text_size_normal" />
 
     </androidx.cardview.widget.CardView>
-
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_done"
@@ -58,8 +54,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/agregar_pictograma"
-        android:src="@drawable/ic_add"
-        app:rippleColor="@color/secondaryDarkColor2" />
-
+        android:src="@drawable/ic_add" />
 
 </RelativeLayout>

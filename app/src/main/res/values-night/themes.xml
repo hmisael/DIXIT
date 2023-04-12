@@ -1,19 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.DIXIT_APP" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.DIXIT_APP" parent="Theme.AppCompat.DayNight.DarkActionBar">
 
         <item name="colorPrimary">@color/primaryColor2</item>
-        <item name="colorPrimaryVariant">@color/primaryLightColor2</item>
-        <item name="colorOnPrimary">@color/primaryDarkColor2</item>
-        <item name="colorSecondary">@color/secondaryColor2</item>
-        <item name="colorSecondaryVariant">@color/primaryLightColor2</item>
-        <item name="colorOnSecondary">@color/secondaryDarkColor2</item>
-        <item name="android:textColorPrimary">@color/primaryTextColor2</item>
-        <item name="android:textColorSecondary">@color/secondaryTextColor2</item>
+        <item name="colorPrimaryDark">@color/primaryLightColor2</item>
+        <item name="colorAccent">@color/secondaryDarkColor2</item>
 
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/primaryDarkColor</item>
-        <!-- Customize your theme here. -->
     </style>
 
 

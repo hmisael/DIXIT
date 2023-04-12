@@ -6,43 +6,43 @@
     app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.dixit_app.ui.MainFragment"
+        android:name="com.example.dixit_app.view.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
 
     <activity
         android:id="@+id/categoriasActivity"
-        android:name="com.example.dixit_app.CategoriasActivity"
+        android:name="com.example.dixit_app.view.CategoriasActivity"
         android:label="activity_categorias"
         tools:layout="@layout/activity_categorias" />
 
     <activity
         android:id="@+id/preguntasActivity"
-        android:name="com.example.dixit_app.PreguntasActivity"
+        android:name="com.example.dixit_app.view.PreguntasActivity"
         android:label="activity_preguntas"
         tools:layout="@layout/activity_preguntas" />
 
     <activity
         android:id="@+id/rutinasActivity"
-        android:name="com.example.dixit_app.RutinasActivity"
+        android:name="com.example.dixit_app.view.RutinasActivity"
         android:label="activity_rutinas"
         tools:layout="@layout/activity_rutinas" />
 
     <activity
         android:id="@+id/frasesActivity"
-        android:name="com.example.dixit_app.FrasesActivity"
+        android:name="com.example.dixit_app.view.FrasesActivity"
         android:label="activity_frases"
         tools:layout="@layout/activity_frases" />
 
     <fragment
         android:id="@+id/acercaDeFragment"
-        android:name="com.example.dixit_app.ui.AcercaDeFragment"
+        android:name="com.example.dixit_app.view.main.AcercaDeFragment"
         android:label="Acerca de DIXIT"
         tools:layout="@layout/fragment_acerca_de" />
 
     <fragment
         android:id="@+id/configuracionFragment"
-        android:name="com.example.dixit_app.ui.ConfiguracionFragment"
+        android:name="com.example.dixit_app.view.main.ConfiguracionFragment"
         android:label="fragment_configuracion"
         tools:layout="@layout/fragment_configuracion" />
 </navigation>

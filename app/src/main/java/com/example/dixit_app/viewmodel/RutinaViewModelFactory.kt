@@ -3,8 +3,8 @@ package com.example.dixit_app.viewmodel
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.dixit_app.repository.CategoriaRepository
-import com.example.dixit_app.repository.RutinaRepository
+import com.example.dixit_app.model.repository.CategoriaRepository
+import com.example.dixit_app.model.repository.RutinaRepository
 
 class RutinaViewModelFactory(
     val app: Application,

@@ -3,11 +3,11 @@ package com.example.dixit_app.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.dixit_app.model.entidades.Pregunta
-import com.example.dixit_app.model.entidades.PreguntaPictogramaRC
-import com.example.dixit_app.model.entidades.Respuesta
-import com.example.dixit_app.model.entidades.RespuestaPictogramaRC
-import com.example.dixit_app.repository.PreguntaRepository
+import com.example.dixit_app.model.entities.Pregunta
+import com.example.dixit_app.model.entities.PreguntaPictogramaRC
+import com.example.dixit_app.model.entities.Respuesta
+import com.example.dixit_app.model.entities.RespuestaPictogramaRC
+import com.example.dixit_app.model.repository.PreguntaRepository
 import kotlinx.coroutines.launch
 
 class PreguntaViewModel(app: Application, private val preguntaRepository: PreguntaRepository)
