@@ -2,6 +2,7 @@ package com.example.dixit_app.view.preguntas
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dixit_app.view.PreguntasActivity
-import com.example.dixit_app.R
 import com.example.dixit_app.databinding.FragmentPreguntaDetalleBinding
 import com.example.dixit_app.model.DixitDatabase
 import com.example.dixit_app.model.entities.Pregunta
@@ -29,6 +29,10 @@ class PreguntaDetalleFragment  : Fragment() {
 
     //Inicializar variable para instanciar la pregunta seleccionada previamente
     private lateinit var currentPregunta: Pregunta
+
+    //Variable para verificar si la Pregunta está completa
+    private var preguntaCompleta = false
+    private var respuestaCompleta = false
 
     //Pregunta: entidad descripción de la pregunta, con pictogramas
     private lateinit var pictogramaViewModel: PictogramaViewModel
@@ -54,7 +58,6 @@ class PreguntaDetalleFragment  : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Reemplazo título de toolbar Activity
-        (activity as PreguntasActivity).supportActionBar?.title = getString(R.string.detalle_pregunta)
 
         val application = requireNotNull(this.activity).application
 
@@ -63,15 +66,19 @@ class PreguntaDetalleFragment  : Fragment() {
 
         val viewModelProviderFactory = PictogramaViewModelFactory(application, pictogramaRepository)
 
-        pictogramaViewModel = ViewModelProvider(this, viewModelProviderFactory)
-            .get(PictogramaViewModel::class.java)
+        pictogramaViewModel = ViewModelProvider(this, viewModelProviderFactory)[PictogramaViewModel::class.java]
 
         currentPregunta = args.pregunta!!
+        (activity as PreguntasActivity).supportActionBar?.title = currentPregunta.nombrePregunta
+
 
         //Carga de pictogramas en el RecyclerView de Pregunta
         setUpPictogramasPreguntaRV()
         //Carga de pictogramas en el RecyclerView de Respuesta
         setUpPictogramasRespuestaRV()
+
+        //Actualizar UI: si la Pregunta o las Respuestas están vacías, mostrar aviso
+        updateUI()
 
         //Botón FAB para editar la Pregunta y agregar o modificar Pictogramas
         binding.fabModificarPregunta.setOnClickListener {
@@ -87,10 +94,10 @@ class PreguntaDetalleFragment  : Fragment() {
             val orientation = resources.configuration.orientation
             layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 // Orientación vertical
-                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 3)
             } else {
                 // Orientación horizontal
-                StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 5)
             }
             setHasFixedSize(true)
             adapter = pictogramasPreguntaAdapter
@@ -103,10 +110,19 @@ class PreguntaDetalleFragment  : Fragment() {
                     pictogramasPreguntaAdapter.differ.submitList(pictogramas[0].pictogramas)
                     //TODO aviso "sin elementos" para Preguntas y Respuestas
                     //updateUI(pictogramas[0].pictogramas)
+                    /*
+                    if (pictogramas[0].pictogramas.isNotEmpty()) {
+                        updatePregunta(true)
+                    }
+                    else{
+                        updatePregunta(false)
+                    }*/
                 }
-            binding.txtTituloPregunta.setText(currentPregunta.nombrePregunta)
+
         }
     }
+
+
 
     private fun setUpPictogramasRespuestaRV() {
         pictogramasRespuestaAdapter = PictogramasRespuestaAdapter()
@@ -114,10 +130,10 @@ class PreguntaDetalleFragment  : Fragment() {
             val orientation = resources.configuration.orientation
             layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 // Orientación vertical
-                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+               GridLayoutManager(requireContext(), 3)
             } else {
                 // Orientación horizontal
-                StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 5)
             }
             setHasFixedSize(true)
             adapter = pictogramasRespuestaAdapter
@@ -131,9 +147,41 @@ class PreguntaDetalleFragment  : Fragment() {
                     pictogramasRespuestaAdapter.differ.submitList(pictogramas[0].pictogramas)
                     //Debo crear un avisode VACIO para Preguntas y Respuestas
                     //updateUI(pictogramas[0].pictogramas)
+                    //TODO aviso "sin elementos" para Preguntas y Respuestas
+                    /*
+                    if (pictogramas[0].pictogramas.isNotEmpty()) {
+                        updateRespuesta(true)
+                    }
+                    else{
+                        updateRespuesta(false)
+                    }
+
+                     */
                 }
             //binding.txtTituloPregunta.setText(currentPregunta.nombrePregunta)
         }
     }
+
+    private fun updateRespuesta(resp: Boolean){
+        respuestaCompleta = resp
+    }
+
+    private fun updatePregunta(preg: Boolean){
+        preguntaCompleta = preg
+    }
+
+    private fun updateUI() {
+        //TODO verificar funcionamiento
+        /*if (respuestaCompleta && preguntaCompleta) {
+            binding.clPreguntaDetalle.visibility = View.GONE
+            //ScrollView visible
+            binding.svPreguntaDetalle.visibility = View.VISIBLE
+        } else {
+            binding.clPreguntaDetalle.visibility = View.VISIBLE
+            //ScrollViewno  visible
+            binding.svPreguntaDetalle.visibility = View.GONE
+        }*/
+    }
+
 
 }

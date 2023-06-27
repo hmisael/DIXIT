@@ -8,7 +8,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/secondaryLightColor"
         android:padding="8dp"
         tools:context=".view.rutinas.RutinaModificarFragment">
 
@@ -22,7 +21,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_topRutina"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:orientation="horizontal"
             android:scrollbars="horizontal"
             tools:listitem="@layout/item_pictograma"

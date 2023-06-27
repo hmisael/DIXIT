@@ -10,17 +10,18 @@
     android:id="@+id/main_frag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondaryLightColor">
+    >
 
     <TextView
         android:id="@+id/txtDixitTitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
+        android:fontFamily="casual"
         android:text="@string/app_name"
-        android:textSize="30sp"
+        android:textSize="48sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,13 +32,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:text="@string/inicio"
         android:textSize="20sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtDixitTitulo"
-        />
+        app:layout_constraintTop_toBottomOf="@id/txtDixitTitulo" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -79,6 +79,7 @@
                     android:layout_height="75dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
+                    android:contentDescription="@string/categorias"
                     android:src="@drawable/undraw_photos_re_pvh3" />
 
                 <TextView
@@ -89,7 +90,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:text="@string/categorias"
-                    android:textSize="@dimen/text_size_normal" />
+                    android:textSize="@dimen/text_size_large" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
@@ -110,6 +111,7 @@
                     android:layout_height="75dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
+                    android:contentDescription="@string/preguntas"
                     android:src="@drawable/undraw_questions_re_1fy7" />
 
                 <TextView
@@ -120,7 +122,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:text="@string/preguntas"
-                    android:textSize="@dimen/text_size_normal" />
+                    android:textSize="@dimen/text_size_large" />
 
             </RelativeLayout>
 
@@ -154,7 +156,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:text="@string/frases"
-                    android:textSize="@dimen/text_size_normal" />
+                    android:textSize="@dimen/text_size_large" />
 
                 <ImageView
                     android:id="@+id/imgFrases"
@@ -162,6 +164,7 @@
                     android:layout_height="75dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
+                    android:contentDescription="@string/frases"
                     android:src="@drawable/undraw_chatting_re_j55r" />
 
             </RelativeLayout>
@@ -186,15 +189,16 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:text="@string/rutinas"
-                    android:textSize="@dimen/text_size_normal" />
+                    android:textSize="@dimen/text_size_large" />
 
                 <ImageView
-                        android:id="@+id/imgRutinas"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="15dp"
-                        android:src="@drawable/undraw_interview_re_e5jn" />
+                    android:id="@+id/imgRutinas"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:contentDescription="@string/rutinas"
+                    android:src="@drawable/undraw_interview_re_e5jn" />
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>

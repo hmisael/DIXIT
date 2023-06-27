@@ -16,8 +16,10 @@ import com.example.dixit_app.view.PreguntasActivity
 import com.example.dixit_app.R
 import com.example.dixit_app.databinding.FragmentPreguntasBinding
 import com.example.dixit_app.model.DixitDatabase
+import com.example.dixit_app.model.entities.Pictograma
 import com.example.dixit_app.model.entities.Pregunta
 import com.example.dixit_app.model.entities.Respuesta
+import com.example.dixit_app.model.entities.RespuestaPictogramaRC
 import com.example.dixit_app.model.repository.PreguntaRepository
 import com.example.dixit_app.viewmodel.PreguntaViewModelFactory
 import com.example.dixit_app.viewmodel.PreguntaViewModel
@@ -148,6 +150,8 @@ class PreguntasFragment :  Fragment(), SearchView.OnQueryTextListener,
             binding.listaPreguntasRecyclerView.visibility = View.GONE
         }
     }
+
+    //TODO editar implementación
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

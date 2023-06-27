@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -24,6 +25,7 @@ import com.example.dixit_app.model.entities.RutinaPictogramaRC
 import com.example.dixit_app.model.repository.RutinaRepository
 import com.example.dixit_app.viewmodel.RutinaViewModel
 import com.example.dixit_app.viewmodel.RutinaViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 
 class RutinaModificarFragment : Fragment(),
     TopAdapterClickRutinaInterface, BottomAdapterClickRutinaInterface,
@@ -91,10 +93,10 @@ class RutinaModificarFragment : Fragment(),
             val orientation = resources.configuration.orientation
             layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 // Orientación vertical
-                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 3)
             } else {
                 // Orientación horizontal
-                StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 5)
             }
             setHasFixedSize(true)
             adapter = pictogramasRutinaRVBottomAdapter
@@ -112,9 +114,23 @@ class RutinaModificarFragment : Fragment(),
         //Asociar adapter para RV Top (los pictogramas seleccionados)
         pictogramasRutinaRVTopAdapter = PictogramasRutinaRVTopAdapter(this)
         binding.rvTopRutina.apply {
+            /*
             layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
             setHasFixedSize(true)
+            */
+
+            val orientation = resources.configuration.orientation
+            layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+                // Orientación vertical
+                GridLayoutManager(requireContext(), 3)
+            } else {
+                // Orientación horizontal
+                GridLayoutManager(requireContext(), 5)
+            }
+            setHasFixedSize(true)
+
             adapter = pictogramasRutinaRVTopAdapter
+
         }
     }
 
@@ -174,6 +190,11 @@ class RutinaModificarFragment : Fragment(),
                     pictosRutina = RutinaPictogramaRC(0, currentRutina.idRutina, picto.idPictograma)
                     rutinaViewModel.insertPictogramasRutina(pictosRutina)
                 }
+                Snackbar.make(
+                    requireView(), "Pictogramas agregados a la Rutina exitosamente.",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+
                 val direction = RutinaModificarFragmentDirections
                     .actionRutinaModificarFragmentToRutinasFragment()
                 view?.findNavController()?.navigate(direction)

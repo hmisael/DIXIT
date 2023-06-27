@@ -10,6 +10,7 @@ import androidx.core.view.MenuProvider
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -65,7 +66,7 @@ class PreguntaModificarFragment : Fragment(),
         currentPregunta = args.pregunta!!
 
         //Reemplazo título de toolbar Activity
-        (activity as PreguntasActivity).supportActionBar?.title = "Pregunta: "+currentPregunta.nombrePregunta
+        (activity as PreguntasActivity).supportActionBar?.title = "Modificar Pregunta"
 
         val application = requireNotNull(this.activity).application
 
@@ -95,10 +96,10 @@ class PreguntaModificarFragment : Fragment(),
             val orientation = resources.configuration.orientation
             layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 // Orientación vertical
-                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 3)
             } else {
                 // Orientación horizontal
-                StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 5)
             }
             setHasFixedSize(true)
             adapter = pictogramasPreguntaRVBottomAdapter
@@ -116,7 +117,18 @@ class PreguntaModificarFragment : Fragment(),
         //Asociar adapter para RV Top (los pictogramas seleccionados)
         pictogramasPreguntaRVTopAdapter = PictogramasPreguntaRVTopAdapter(this)
         binding.rvTopPregunta.apply {
+            /*
             layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
+            setHasFixedSize(true)
+            */
+            val orientation = resources.configuration.orientation
+            layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+                // Orientación vertical
+                GridLayoutManager(requireContext(), 3)
+            } else {
+                // Orientación horizontal
+                GridLayoutManager(requireContext(), 5)
+            }
             setHasFixedSize(true)
             adapter = pictogramasPreguntaRVTopAdapter
         }
@@ -173,6 +185,11 @@ class PreguntaModificarFragment : Fragment(),
                     pictosPregunta = PreguntaPictogramaRC(0, currentPregunta.idPregunta, picto.idPictograma)
                     preguntaViewModel.insertPictogramasPregunta(pictosPregunta)
                 }
+                Snackbar.make(
+                    requireView(), "Pictogramas agregados a la Pregunta exitosamente.",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+
                 //Se prosigue a editar las Respuestas
                 val direction = PreguntaModificarFragmentDirections
                     .actionPreguntaModificarFragmentToRespuestaModificarFragment(currentPregunta)

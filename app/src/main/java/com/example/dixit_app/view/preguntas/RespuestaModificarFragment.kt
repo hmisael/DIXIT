@@ -10,6 +10,7 @@ import androidx.core.view.MenuProvider
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -91,10 +92,10 @@ class RespuestaModificarFragment : Fragment(), TopAdapterClickPreguntaInterface,
             val orientation = resources.configuration.orientation
             layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 // Orientación vertical
-                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 3)
             } else {
                 // Orientación horizontal
-                StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 3)
             }
             setHasFixedSize(true)
             adapter = pictogramasRespuestaRVBottomAdapter
@@ -112,7 +113,14 @@ class RespuestaModificarFragment : Fragment(), TopAdapterClickPreguntaInterface,
         //Asociar adapter para RV Top (los pictogramas seleccionados)
         pictogramasRespuestaRVTopAdapter = PictogramasPreguntaRVTopAdapter(this)
         binding.rvTopRespuesta.apply {
-            layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
+            val orientation = resources.configuration.orientation
+            layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+                // Orientación vertical
+                GridLayoutManager(requireContext(), 3)
+            } else {
+                // Orientación horizontal
+                GridLayoutManager(requireContext(), 3)
+            }
             setHasFixedSize(true)
             adapter = pictogramasRespuestaRVTopAdapter
         }
@@ -178,8 +186,6 @@ class RespuestaModificarFragment : Fragment(), TopAdapterClickPreguntaInterface,
                     //A CORREGIR: uso idPregunta pero debe ser idRespuesta
                     pictoRespuesta = RespuestaPictogramaRC(0, currentPregunta.idPregunta, picto.idPictograma)
                     preguntaViewModel.insertPictogramasRespuesta(pictoRespuesta)
-
-
             }
 
         Snackbar.make(

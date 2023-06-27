@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.dixit_app.R
 import com.example.dixit_app.view.RutinasActivity
@@ -47,7 +48,6 @@ class RutinaDetalleFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Reemplazo título de toolbar Activity
-        (activity as RutinasActivity).supportActionBar?.title = getString(R.string.detalle_rutinas)
 
         val application = requireNotNull(this.activity).application
 
@@ -60,6 +60,8 @@ class RutinaDetalleFragment : Fragment(){
             this, viewModelProviderFactory).get(PictogramaViewModel::class.java)
 
         currentRutina = args.rutina!!
+        (activity as RutinasActivity).supportActionBar?.title = currentRutina.nombreRutina
+
 
         //Carga de datos en el RecyclerView
         setUpRecyclerViewPictogramas()
@@ -79,10 +81,10 @@ class RutinaDetalleFragment : Fragment(){
             val orientation = resources.configuration.orientation
             layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 // Orientación vertical
-                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 3)
             } else {
                 // Orientación horizontal
-                StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 5)
             }
             setHasFixedSize(true)
             adapter = pictogramasRutinaAdapter
@@ -94,22 +96,21 @@ class RutinaDetalleFragment : Fragment(){
                     pictogramasRutinaAdapter.differ.submitList(pictogramas[0].pictogramas)
                     updateUI(pictogramas[0].pictogramas)
                 }
-            binding.txtTituloRutina.setText(currentRutina.nombreRutina)
+
         }
     }
 
     private fun updateUI(pictogramas: List<Pictograma>) {
         if (pictogramas.isNotEmpty()) {
             //Si existen pictogramas en la Rutina
-            binding.textView.visibility = View.GONE
-            binding.imageErrorRutinaView.visibility = View.GONE
-            binding.txtTituloRutina.visibility = View.VISIBLE
+            binding.clRutinaDetalle.visibility = View.GONE
+
+            //binding.imageErrorRutinaView.visibility = View.GONE
             binding.listaPictogramasRutinaRecyclerView.visibility = View.VISIBLE
         } else {
             //Si la Rutina está vacía
-            binding.textView.visibility = View.VISIBLE
-            binding.imageErrorRutinaView.visibility = View.VISIBLE
-            binding.txtTituloRutina.visibility = View.GONE
+            binding.clRutinaDetalle.visibility = View.VISIBLE
+            //binding.imageErrorRutinaView.visibility = View.VISIBLE
             binding.listaPictogramasRutinaRecyclerView.visibility = View.GONE
         }
     }

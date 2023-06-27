@@ -8,7 +8,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/secondaryLightColor"
         android:padding="8dp"
         tools:context=".view.frases.FraseModificarFragment">
 
@@ -22,11 +21,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_topFrase"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
+            android:layout_below="@id/textViewModFrase"
             android:orientation="horizontal"
             android:scrollbars="horizontal"
-            tools:listitem="@layout/item_pictograma"
-            android:layout_below="@id/textViewModFrase">
+            tools:listitem="@layout/item_pictograma">
+
         </androidx.recyclerview.widget.RecyclerView>
 
         <androidx.appcompat.widget.SearchView

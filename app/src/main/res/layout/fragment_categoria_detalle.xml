@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    android:background="@color/secondaryLightColor"
     tools:context=".view.categorias.CategoriaDetalleFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -19,29 +18,36 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_pictograma" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:elevation="10dp"
-        app:cardCornerRadius="10dp">
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:id="@+id/clCategoriaDetalle">
+
+        <ImageView
+            android:id="@+id/imageErrorCategoria"
+            android:layout_width="@dimen/error_image_size"
+            android:layout_height="@dimen/error_image_size"
+            android:src="@drawable/ic_baseline_error_outline_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tv_sin_pictogramas"
-            android:layout_width="match_parent"
+            android:id="@+id/tvErrorCategoria"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="284dp"
-            android:gravity="center"
-            android:padding="50dp"
-            android:text="@string/agregar_pictogramas_desde_el_bot_n_inferior"
-            android:textSize="@dimen/text_size_normal" />
+            android:text="@string/categoria_sin_pictogramas"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintEnd_toEndOf="@id/imageErrorCategoria"
+            app:layout_constraintStart_toStartOf="@id/imageErrorCategoria"
+            app:layout_constraintTop_toBottomOf="@id/imageErrorCategoria" />
 
-    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_done"

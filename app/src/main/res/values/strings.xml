@@ -36,6 +36,12 @@
     <string name="no_hay_frases_creadas">¡No hay Frases guardadas!</string>
     <string name="no_hay_preguntas_creadas">¡No hay Preguntas guardadas!</string>
     <string name="no_hay_categor_as_guardadas">¡No hay Categorías guardadas!</string>
+    <string name="pregunta_sin_picto">
+    ¡Pregunta incompleta!
+    agregar pictogramas
+    desde el botón inferior</string>
+    <string name="categoria_sin_pictogramas">¡Categoría sin Pictogramas!</string>
+
     <string name="frase_sin_pictogramas">¡Frase sin Pictogramas!</string>
     <string name="pregunta_sin_pictogramas">¡Pregunta sin Pictogramas!</string>
     <string name="rutina_sin_pictogramas">¡Rutina sin Pictogramas!</string>
@@ -49,7 +55,7 @@
     <string name="titulo_de_frase">Titulo de Frase</string>
 
     <string name="titulo_de_pregunta">Titulo de Pregunta</string>
-    <string name="titulo_de_respuesta">Respuestas:</string>
+    <string name="titulo_de_respuesta">Elija una respuesta:</string>
 
     <string name="titulo_de_rutina">Titulo de Rutina</string>
     <string name="comunicar">COMUNICAR</string>
@@ -60,7 +66,7 @@
     <string name="elija_los_pictogramas_a_agregar">Buscar pictogramas</string>
     <string name="pictogramas_de_la_rutina">Pictogramas de la Rutina</string>
     <string name="pictogramas_de_la_pregunta">Pictogramas de la Pregunta</string>
-    <string name="respuestas">Respuestas:</string>
+    <string name="respuestas">Pictogramas de Respuestas:</string>
     <string name="elija_la_imagen_a_guardar">Elija la imagen a guardar</string>
     <string name="no_hay_rutinas_guardadas">¡No hay Rutinas guardadas!</string>
     <string name="seleccione_el_directorio_de_pictogramas_haciendo_clic_en_el_siguiente_bot_n">
@@ -72,5 +78,5 @@
     <string name="buscar_im_genes">Buscar imágenes</string>
     <string name="pictogramas">Pictogramas</string>
     <string name="men_principal">Menú Principal</string>
-    <string name="inicio">Inicio</string>
+    <string name="inicio">Un puente para comunicarnos.</string>
 </resources>

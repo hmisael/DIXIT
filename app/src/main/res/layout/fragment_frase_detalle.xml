@@ -5,16 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    android:background="@color/secondaryLightColor"
     tools:context=".view.frases.FraseDetalleFragment">
 
-    <TextView
-        android:id="@+id/txtTituloFrase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/titulo_de_frase"
-        android:textSize="@dimen/text_size_normal"
-        android:visibility="gone" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaPictogramasRecyclerView"
@@ -24,14 +17,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_below="@id/txtTituloFrase"
+
         android:visibility="gone">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/clFraseDetalle"
+        >
         <ImageView
             android:id="@+id/imageErrorView"
             android:layout_width="@dimen/error_image_size"

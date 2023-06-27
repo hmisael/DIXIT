@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.dixit_app.view.FrasesActivity
 import com.example.dixit_app.R
@@ -45,7 +46,6 @@ class FraseDetalleFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Reemplazo título de toolbar Activity
-        (activity as FrasesActivity).supportActionBar?.title = getString(R.string.detalle_frases)
 
         val application = requireNotNull(this.activity).application
 
@@ -58,6 +58,8 @@ class FraseDetalleFragment : Fragment(){
             .get(PictogramaViewModel::class.java)
 
         currentFrase = args.frase!!
+        (activity as FrasesActivity).supportActionBar?.title = currentFrase.nombreFrase
+
 
         //Carga de datos en el RecyclerView
         setUpRecyclerViewPictogramas()
@@ -75,10 +77,10 @@ class FraseDetalleFragment : Fragment(){
             val orientation = resources.configuration.orientation
             layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 // Orientación vertical
-                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 3)
             } else {
                 // Orientación horizontal
-                StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 5)
             }
             setHasFixedSize(true)
             adapter = pictogramasFraseAdapter
@@ -91,22 +93,29 @@ class FraseDetalleFragment : Fragment(){
                     pictogramasFraseAdapter.differ.submitList(pictogramas[0].pictogramas)
                     updateUI(pictogramas[0].pictogramas)
                 }
-            binding.txtTituloFrase.setText(currentFrase.nombreFrase)
         }
     }
 
     private fun updateUI(pictogramas: List<Pictograma>) {
         if (pictogramas.isNotEmpty()) {
             //Si existen pictogramas en la Frase
+
+            binding.clFraseDetalle.visibility = View.GONE
+            /*
             binding.textView.visibility = View.GONE
             binding.imageErrorView.visibility = View.GONE
-            binding.txtTituloFrase.visibility = View.VISIBLE
+            */
+
             binding.listaPictogramasRecyclerView.visibility = View.VISIBLE
         } else {
             //Si la Frase está vacía
+            binding.clFraseDetalle.visibility = View.VISIBLE
+
+            /*
             binding.textView.visibility = View.VISIBLE
             binding.imageErrorView.visibility = View.VISIBLE
-            binding.txtTituloFrase.visibility = View.GONE
+             */
+
             binding.listaPictogramasRecyclerView.visibility = View.GONE
         }
     }

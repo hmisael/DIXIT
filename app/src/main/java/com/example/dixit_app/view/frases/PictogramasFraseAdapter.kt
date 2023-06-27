@@ -108,13 +108,13 @@ class PictogramasFraseAdapter :  RecyclerView.Adapter<PictogramasFraseAdapter.Pi
     private fun getLetras(cadena: String): String {
         val result : MutableList<String> = mutableListOf<String>()
         var numberStr = ""
-        for(i : Int in 0 until cadena.length){
+        for(i : Int in cadena.indices){
             val c: Char = cadena[i]
             //Eliminar guión bajo para lectura correcta
             if (c == '_') {
                 numberStr += ' '
                 if (i == cadena.length - 1) {
-                    result.add(numberStr.toString())
+                    result.add(numberStr)
                 }
             }
             else {

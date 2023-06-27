@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -62,7 +63,7 @@ class FraseModificarFragment : Fragment(), TopAdapterClickFraseInterface, Bottom
         currentFrase = args.frase!!
 
         //Reemplazo título de toolbar Activity
-        (activity as FrasesActivity).supportActionBar?.title = "Frase: "+currentFrase.nombreFrase
+        (activity as FrasesActivity).supportActionBar?.title = "Modificar Frase"
 
         val application = requireNotNull(this.activity).application
         //Iniciar el Repositorio de Frase para ViewModel
@@ -88,10 +89,10 @@ class FraseModificarFragment : Fragment(), TopAdapterClickFraseInterface, Bottom
             val orientation = resources.configuration.orientation
             layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 // Orientación vertical
-                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 3)
             } else {
                 // Orientación horizontal
-                StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 5)
             }
             setHasFixedSize(true)
             adapter = pictogramasFraseRVBottomAdapter
@@ -109,8 +110,23 @@ class FraseModificarFragment : Fragment(), TopAdapterClickFraseInterface, Bottom
         //Asociar adapter para RV Top (los pictogramas seleccionados)
         pictogramasFraseRVTopAdapter = PictogramasFraseRVTopAdapter(this)
         binding.rvTopFrase.apply {
+            /*
             layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
             setHasFixedSize(true)
+            */
+
+
+            val orientation = resources.configuration.orientation
+            layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+                // Orientación vertical
+                GridLayoutManager(requireContext(), 3)
+            } else {
+                // Orientación horizontal
+                GridLayoutManager(requireContext(), 5)
+            }
+            setHasFixedSize(true)
+
+
             adapter = pictogramasFraseRVTopAdapter
         }
     }

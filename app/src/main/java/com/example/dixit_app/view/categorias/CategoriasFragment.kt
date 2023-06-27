@@ -8,6 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -17,12 +19,14 @@ import com.example.dixit_app.R
 import com.example.dixit_app.databinding.FragmentCategoriasBinding
 import com.example.dixit_app.model.DixitDatabase
 import com.example.dixit_app.model.entities.Categoria
+import com.example.dixit_app.model.entities.Pictograma
+import com.example.dixit_app.model.entities.RespuestaPictogramaRC
 import com.example.dixit_app.model.repository.CategoriaRepository
 import com.example.dixit_app.viewmodel.CategoriaViewModel
 import com.example.dixit_app.viewmodel.CategoriaViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 
-class CategoriasFragment : Fragment(), SearchView.OnQueryTextListener,
+class CategoriasFragment : Fragment(), MenuProvider, SearchView.OnQueryTextListener,
                         CategoriaClickInterface, CategoriaClickDeleteInterface {
 
     private lateinit var binding: FragmentCategoriasBinding
@@ -42,6 +46,12 @@ class CategoriasFragment : Fragment(), SearchView.OnQueryTextListener,
         super.onViewCreated(view, savedInstanceState)
         //Reemplazo título de toolbar Activity
         (activity as CategoriasActivity).supportActionBar?.title = getString(R.string.categorias)
+
+        //Menu
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, lifecycle.currentState)
+
+
 
         val application = requireNotNull(this.activity).application
 
@@ -132,7 +142,10 @@ class CategoriasFragment : Fragment(), SearchView.OnQueryTextListener,
     }
 
 
+
+
     //TODO editar implementación
+    /*
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
@@ -140,6 +153,25 @@ class CategoriasFragment : Fragment(), SearchView.OnQueryTextListener,
         val busquedaMenu = menu.findItem(R.id.menu_buscar_elemento).actionView as SearchView
         busquedaMenu.isSubmitButtonEnabled = false
         busquedaMenu.setOnQueryTextListener(this)
+    }
+    */
+
+    //Busqueda
+     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.menu_buscar, menu)
+
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem) : Boolean{
+        return when (menuItem.itemId) {
+            R.menu.menu_buscar -> {
+                val busquedaMenu = menuItem.actionView as SearchView
+                busquedaMenu.isSubmitButtonEnabled = false
+                busquedaMenu.setOnQueryTextListener(this)
+            true
+            }
+            else -> false
+        }
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {

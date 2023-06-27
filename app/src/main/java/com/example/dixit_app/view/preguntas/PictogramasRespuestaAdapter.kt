@@ -1,5 +1,6 @@
 package com.example.dixit_app.view.preguntas
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
 import android.os.Environment
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.dixit_app.R
 import com.example.dixit_app.databinding.ItemPictogramaBinding
 import com.example.dixit_app.model.entities.Pictograma
 import java.io.File
@@ -53,6 +55,7 @@ class PictogramasRespuestaAdapter :  RecyclerView.Adapter<PictogramasRespuestaAd
         )
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: PictogramaViewHolder, position: Int) {
 
         val pictogramaActual = differ.currentList[position]
@@ -73,6 +76,7 @@ class PictogramasRespuestaAdapter :  RecyclerView.Adapter<PictogramasRespuestaAd
             imageUri =
                 Uri.parse("android.resource://com.example.dixit_app/drawable/placeholder")
         }
+
         //Finalmente, asignar la imagen a la View de la imagen del pictograma
         Glide.with(holder.itemView.context)
             .load(imageUri)
@@ -82,8 +86,9 @@ class PictogramasRespuestaAdapter :  RecyclerView.Adapter<PictogramasRespuestaAd
         //Asignar título de Frase
         holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
 
-        //Setear el clickListener de cada ítem de la lista, para redirigir l fragmento  ModificarPictograma
+        //Al presionar un ítem Respuesta
         holder.itemView.setOnClickListener { view ->
+            //Verbalizar su nombre
             tts = TextToSpeech(context, TextToSpeech.OnInitListener {
                 if (it == TextToSpeech.SUCCESS) {
                     tts.language = locale
@@ -92,6 +97,10 @@ class PictogramasRespuestaAdapter :  RecyclerView.Adapter<PictogramasRespuestaAd
                     tts.speak(pictogramaActual.nombrePictograma, TextToSpeech.QUEUE_ADD, null)
                 }
             })
+
+            //Cambia de color el fondo
+            view.setBackgroundColor(R.color.secondaryLightColor)
+
         }
     }
 

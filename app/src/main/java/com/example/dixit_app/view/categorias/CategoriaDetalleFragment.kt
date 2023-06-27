@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.dixit_app.view.CategoriasActivity
 import com.example.dixit_app.R
@@ -113,10 +114,10 @@ class CategoriaDetalleFragment : Fragment() ,
             val orientation = resources.configuration.orientation
             layoutManager = if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 // Orientación vertical
-                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 3)
             } else {
                 // Orientación horizontal
-                StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL)
+                GridLayoutManager(requireContext(), 5)
             }
             setHasFixedSize(true)
             adapter = pictogramaAdapter
@@ -134,10 +135,10 @@ class CategoriaDetalleFragment : Fragment() ,
 
     private fun updateUI(pictogramas: List<Pictograma>) {
         if (pictogramas.isNotEmpty()) {
-            binding.cardView3.visibility = View.GONE
+            binding.clCategoriaDetalle.visibility = View.GONE
             binding.listaPictogramasRecyclerView.visibility = View.VISIBLE
         } else {
-            binding.cardView3.visibility = View.VISIBLE
+            binding.clCategoriaDetalle.visibility = View.VISIBLE
             binding.listaPictogramasRecyclerView.visibility = View.GONE
         }
     }
