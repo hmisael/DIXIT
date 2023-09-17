@@ -11,15 +11,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:padding="5dp">
+        android:layout_height="60dp"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/idIVDelete"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+
             app:srcCompat="@android:drawable/ic_menu_delete" />
 
         <TextView
@@ -27,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txtTitulo"
-            android:textSize="20sp" />
+            android:textSize="23sp" />
     </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

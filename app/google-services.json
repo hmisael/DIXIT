@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "347913293678",
+    "project_id": "dixit-023",
+    "storage_bucket": "dixit-023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347913293678:android:78773975a65339d2703b7f",
+        "android_client_info": {
+          "package_name": "com.example.dixit_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347913293678-v3ghriqkfgdnf27mt4gv3ruh9ome18hh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSrHO1Aa3rWxIKM4JWUHHHRgghpjFa3Ks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "347913293678-v3ghriqkfgdnf27mt4gv3ruh9ome18hh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

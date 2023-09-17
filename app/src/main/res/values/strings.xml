@@ -79,4 +79,5 @@
     <string name="pictogramas">Pictogramas</string>
     <string name="men_principal">Menú Principal</string>
     <string name="inicio">Un puente para comunicarnos.</string>
+    <string name="tocar_la_figura_para_cargar_una_imagen">Tocar la figura para cargar una imagen.</string>
 </resources>

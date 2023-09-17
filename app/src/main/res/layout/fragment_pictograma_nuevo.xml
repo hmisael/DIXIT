@@ -29,23 +29,44 @@
             android:gravity="center"
             android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/pictogramaTxt"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="200"
-            android:hint="@string/ingrese_nombre_de_pictograma"
-            android:inputType="text"
-            android:textSize="15sp"
-            android:autofillHints="..." />
+            <EditText
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
 
-        <ImageView
-            android:id="@+id/imagenPictograma"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@android:drawable/ic_menu_gallery" />
+                android:id="@+id/pictogramaTxt"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="200"
+                android:autofillHints="..."
+                android:hint="@string/ingrese_nombre_de_pictograma"
+                android:inputType="text"
+                android:textSize="30sp" />
+
+            <ImageView
+
+                android:id="@+id/imagenPictograma"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:src="@drawable/undraw_photos_re_pvh3" />
+
+            <TextView
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+
+                android:textSize="25sp"
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tocar_la_figura_para_cargar_una_imagen" />
+
 
         </LinearLayout>
+
+
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
