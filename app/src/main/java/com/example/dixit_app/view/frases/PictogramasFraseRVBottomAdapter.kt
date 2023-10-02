@@ -98,6 +98,8 @@ class PictogramasFraseRVBottomAdapter (val bottomAdapter : BottomAdapterClickFra
     override fun getItemCount(): Int {
         return differBottom.currentList.size
     }
+
+
 }
 
 

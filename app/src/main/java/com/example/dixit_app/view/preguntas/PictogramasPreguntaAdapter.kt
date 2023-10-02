@@ -61,7 +61,7 @@ class PictogramasPreguntaAdapter :  RecyclerView.Adapter<PictogramasPreguntaAdap
         val pictogramaActual = differ.currentList[position]
 
         //Asignar nombre del pictograma a la View de texto
-        holder.itemBinding.nombrePictograma.text = getLetras(pictogramaActual.nombrePictograma)
+        holder.itemBinding.nombrePictograma.text = pictogramaActual.nombrePictograma
 
         //Recupero del almacenamiento físico el archivo de la imagen con el id del pictograma
         val file = File(
@@ -85,7 +85,8 @@ class PictogramasPreguntaAdapter :  RecyclerView.Adapter<PictogramasPreguntaAdap
             .into(holder.itemBinding.imageViewPictograma)
 
         //Asignar título de Frase
-        holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
+        //VERIFICAR
+        //holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
 
         //Seteo el clickListener de cada ítem de la lista, para redirigir l fragmento  ModificarPictograma
         holder.itemView.setOnClickListener { view ->
@@ -101,35 +102,6 @@ class PictogramasPreguntaAdapter :  RecyclerView.Adapter<PictogramasPreguntaAdap
 
     override fun getItemCount(): Int {
         return differ.currentList.size
-    }
-
-    private fun getLetras(cadena: String): String {
-        val result : MutableList<String> = mutableListOf<String>()
-        var numberStr = ""
-        for(i : Int in 0 until cadena.length){
-            val c: Char = cadena[i]
-            //Eliminar guión bajo para lectura correcta
-            if (c == '_') {
-                numberStr += ' '
-                if (i == cadena.length - 1) {
-                    result.add(numberStr.toString())
-                }
-            }
-            else {
-                //Eliminar números
-                if (c !in '0'..'9') {
-                    numberStr += c
-                    if (i == cadena.length - 1) {
-                        result.add(numberStr.toString())
-                    }
-                    //Y finalmente si está vacía la cadena
-                } else if (!numberStr.isNullOrBlank()) {
-                    result.add(numberStr.toString())
-                    numberStr = ""
-                }
-            }
-        }
-        return result.joinToString(File.separator, "")
     }
 
 }

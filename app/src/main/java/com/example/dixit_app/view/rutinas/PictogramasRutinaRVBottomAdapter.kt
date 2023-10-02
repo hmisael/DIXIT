@@ -72,7 +72,8 @@ class PictogramasRutinaRVBottomAdapter (private val bottomAdapter : BottomAdapte
 
 
         //Asignar título de Rutina
-        holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
+        //VERIFICAR
+        //holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
 
         //Seteo el clickListener de cada ítem de la lista, para redirigir l fragmento  ModificarPictograma
         holder.itemView.setOnClickListener {
@@ -98,6 +99,7 @@ class PictogramasRutinaRVBottomAdapter (private val bottomAdapter : BottomAdapte
     override fun getItemCount(): Int {
         return differBottom.currentList.size
     }
+
 
 }
 

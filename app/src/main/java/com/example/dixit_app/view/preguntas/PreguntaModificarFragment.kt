@@ -99,7 +99,7 @@ class PreguntaModificarFragment : Fragment(),
                 GridLayoutManager(requireContext(), 3)
             } else {
                 // Orientación horizontal
-                GridLayoutManager(requireContext(), 5)
+                GridLayoutManager(requireContext(), 6)
             }
             setHasFixedSize(true)
             adapter = pictogramasPreguntaRVBottomAdapter

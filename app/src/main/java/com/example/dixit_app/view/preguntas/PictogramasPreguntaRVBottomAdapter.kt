@@ -71,7 +71,8 @@ class PictogramasPreguntaRVBottomAdapter (private val bottomAdapter : BottomAdap
             .into(holder.itemBinding.imageViewPictograma)
 
         //Asignar título de Pregunta
-        holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
+        //VERIFICAR
+        //holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
 
         //Setear el clickListener de cada ítem de la lista, para redirigir l fragmento  ModificarPictograma
         holder.itemView.setOnClickListener { view ->
@@ -100,6 +101,7 @@ class PictogramasPreguntaRVBottomAdapter (private val bottomAdapter : BottomAdap
     override fun getItemCount(): Int {
         return differBottom.currentList.size
     }
+
 
 }
 

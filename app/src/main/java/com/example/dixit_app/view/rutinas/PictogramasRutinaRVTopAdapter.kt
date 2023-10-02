@@ -73,7 +73,8 @@ class PictogramasRutinaRVTopAdapter  (val topAdapter : TopAdapterClickRutinaInte
             .into(holder.itemBinding.imageViewPictograma)
 
         //Asignar título de Rutina
-        holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
+        //VERIFICAR
+        //holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
 
         //Setear el clickListener de cada ítem de la lista, para redirigir l fragmento  ModificarPictograma
         holder.itemView.setOnClickListener {
@@ -103,6 +104,7 @@ class PictogramasRutinaRVTopAdapter  (val topAdapter : TopAdapterClickRutinaInte
     override fun getItemCount(): Int {
         return differTop.currentList.size
     }
+
 }
 
 interface TopAdapterClickRutinaInterface{

@@ -9,7 +9,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/main_frag"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     >
 
     <TextView
@@ -64,9 +64,10 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card1"
-            android:layout_width="1dp"
-            android:layout_height="134dp"
-            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            app:cardElevation="@dimen/common_elevation"
             android:layout_weight="1">
 
             <RelativeLayout
@@ -75,10 +76,10 @@
 
                 <ImageView
                     android:id="@+id/imgCategorias"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:contentDescription="@string/categorias"
                     android:src="@drawable/undraw_photos_re_pvh3" />
 
@@ -88,7 +89,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imgCategorias"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:text="@string/categorias"
                     android:textSize="@dimen/text_size_large" />
             </RelativeLayout>
@@ -98,7 +102,8 @@
             android:id="@+id/cardView2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
+            app:cardElevation="@dimen/common_elevation"
             android:layout_weight="1">
 
             <RelativeLayout
@@ -107,10 +112,10 @@
 
                 <ImageView
                     android:id="@+id/imgPreguntas"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:contentDescription="@string/preguntas"
                     android:src="@drawable/undraw_questions_re_1fy7" />
 
@@ -120,7 +125,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imgPreguntas"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:text="@string/preguntas"
                     android:textSize="@dimen/text_size_large" />
 
@@ -139,10 +147,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
+            app:cardElevation="@dimen/common_elevation"
+
             android:layout_weight="1">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -154,16 +165,19 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imgFrases"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:text="@string/frases"
                     android:textSize="@dimen/text_size_large" />
 
                 <ImageView
                     android:id="@+id/imgFrases"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:contentDescription="@string/frases"
                     android:src="@drawable/undraw_chatting_re_j55r" />
 
@@ -174,7 +188,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            app:cardElevation="@dimen/common_elevation"
+            android:layout_margin="5dp"
             android:layout_weight="1">
 
             <RelativeLayout
@@ -187,16 +202,19 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imgRutinas"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
                     android:text="@string/rutinas"
                     android:textSize="@dimen/text_size_large" />
 
                 <ImageView
                     android:id="@+id/imgRutinas"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:contentDescription="@string/rutinas"
                     android:src="@drawable/undraw_interview_re_e5jn" />
             </RelativeLayout>

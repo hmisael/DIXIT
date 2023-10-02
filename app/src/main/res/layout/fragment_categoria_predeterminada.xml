@@ -26,7 +26,7 @@ android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:textSize="@dimen/text_size_normal"
-        android:text="@string/pictogramas"/>
+        android:text="@string/pictogramas_seleccionados"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pictogramasPredeterminadosRV"
@@ -34,6 +34,7 @@ android:orientation="vertical"
         android:layout_height="match_parent"
         android:scrollbarStyle="outsideInset"
         android:scrollbars="vertical"
+
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
 
 </LinearLayout>

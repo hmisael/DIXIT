@@ -16,6 +16,7 @@ import com.example.dixit_app.model.DixitDatabase
 import com.example.dixit_app.model.entities.Frase
 import com.example.dixit_app.model.entities.Pictograma
 import com.example.dixit_app.model.repository.PictogramaRepository
+import com.example.dixit_app.view.CategoriasActivity
 import com.example.dixit_app.viewmodel.PictogramaViewModel
 import com.example.dixit_app.viewmodel.PictogramaViewModelFactory
 

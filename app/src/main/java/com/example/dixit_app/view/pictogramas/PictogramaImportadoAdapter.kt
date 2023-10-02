@@ -30,9 +30,9 @@ RecyclerView.Adapter<PictogramaImportadoAdapter.PictogramaViewHolder>() {
 
     override fun onBindViewHolder(holder: PictogramaViewHolder, position: Int) {
         //holder.bind(uris.elementAt(position), names.elementAt(position))
-        holder.bind(uris.elementAt(position), getLetras(names.elementAt(position)))
+        holder.bind(uris.elementAt(position), names.elementAt(position))
 
-        Log.i("MOD"," ADAPTER: "+uris.elementAt(position).path+" - nombre: "+names.elementAt(position))
+        //Log.i("MOD"," ADAPTER: "+uris.elementAt(position).path+" - nombre: "+names.elementAt(position))
     }
 
     override fun getItemCount() = uris.size
@@ -43,17 +43,15 @@ RecyclerView.Adapter<PictogramaImportadoAdapter.PictogramaViewHolder>() {
     private fun getLetras(cadena: String): String {
         val result : MutableList<String> = mutableListOf<String>()
         var numberStr = ""
-        for(i : Int in 0 until cadena.length){
+        for(i : Int in cadena.indices){
             val c: Char = cadena[i]
             //Eliminar guión bajo para lectura correcta
             if (c == '_') {
                 numberStr += ' '
                 if (i == cadena.length - 1) {
-                    result.add(numberStr.toString())
+                    result.add(numberStr)
                 }
             }
-            //No se eliminan números al realizar un importe masivo de imágenes,
-            //puesto que para un término pueden existir más de 1 imagen relacionada
             /*else {
                 //Eliminar números
                 if (c !in '0'..'9') {
@@ -62,7 +60,8 @@ RecyclerView.Adapter<PictogramaImportadoAdapter.PictogramaViewHolder>() {
                         result.add(numberStr.toString())
                     }
                     //Y finalmente si está vacía la cadena
-                } else if (!numberStr.isNullOrBlank()) {
+                } else
+                if (!numberStr.isNullOrBlank()) {
                     result.add(numberStr.toString())
                     numberStr = ""
                 }

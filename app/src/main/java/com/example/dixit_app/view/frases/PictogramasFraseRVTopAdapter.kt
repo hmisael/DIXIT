@@ -75,7 +75,8 @@ class PictogramasFraseRVTopAdapter (val topAdapter : TopAdapterClickFraseInterfa
             .into(holder.itemBinding.imageViewPictograma)
 
         //Asignar título de Frase
-        holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
+        //VERIFICAR
+        //holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
 
         //Seteo el clickListener de cada ítem de la lista, para redirigir l fragmento  ModificarPictograma
         holder.itemView.setOnClickListener {
@@ -106,7 +107,11 @@ class PictogramasFraseRVTopAdapter (val topAdapter : TopAdapterClickFraseInterfa
     override fun getItemCount(): Int {
         return differTop.currentList.size
     }
+
+
 }
+
+
 
 
 interface TopAdapterClickFraseInterface{

@@ -34,6 +34,7 @@
 
         <activity
             android:name=".view.SplashActivity"
+            android:screenOrientation="landscape"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,11 +42,25 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.FrasesActivity" />
-        <activity android:name=".view.RutinasActivity" />
-        <activity android:name=".view.PreguntasActivity" />
-        <activity android:name=".view.CategoriasActivity" />
-        <activity android:name=".view.MainActivity" />
+        <activity
+            android:name=".view.FrasesActivity"
+            android:screenOrientation="landscape"/>
+
+        <activity
+            android:name=".view.RutinasActivity"
+            android:screenOrientation="landscape"/>
+
+        <activity
+            android:name=".view.PreguntasActivity"
+            android:screenOrientation="landscape"/>
+
+        <activity
+            android:name=".view.CategoriasActivity"
+            android:screenOrientation="landscape"/>
+
+        <activity
+            android:name=".view.MainActivity"
+            android:screenOrientation="landscape"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

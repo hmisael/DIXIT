@@ -71,7 +71,8 @@ RecyclerView.Adapter<PictogramasPreguntaRVTopAdapter.PictogramaTopViewHolder>(){
             .into(holder.itemBinding.imageViewPictograma)
 
         //Asignar título de Pregunta
-        holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
+        //VERIFICAR
+        //holder.itemBinding.nombrePictograma.setText(pictogramaActual.nombrePictograma)
 
         //Seteo el clickListener de cada ítem de la lista, para redirigir l fragmento  ModificarPictograma
         holder.itemView.setOnClickListener { view ->
@@ -100,6 +101,8 @@ RecyclerView.Adapter<PictogramasPreguntaRVTopAdapter.PictogramaTopViewHolder>(){
     override fun getItemCount(): Int {
         return differTop.currentList.size
     }
+
+
 }
 
 interface TopAdapterClickPreguntaInterface{

@@ -95,7 +95,7 @@ class RespuestaModificarFragment : Fragment(), TopAdapterClickPreguntaInterface,
                 GridLayoutManager(requireContext(), 3)
             } else {
                 // Orientación horizontal
-                GridLayoutManager(requireContext(), 3)
+                GridLayoutManager(requireContext(), 6)
             }
             setHasFixedSize(true)
             adapter = pictogramasRespuestaRVBottomAdapter

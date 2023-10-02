@@ -23,6 +23,7 @@ import com.example.dixit_app.databinding.FragmentPictogramaModificarBinding
 import com.example.dixit_app.model.DixitDatabase
 import com.example.dixit_app.model.entities.Pictograma
 import com.example.dixit_app.model.repository.PictogramaRepository
+import com.example.dixit_app.view.CategoriasActivity
 
 import com.example.dixit_app.viewmodel.PictogramaViewModel
 import com.example.dixit_app.viewmodel.PictogramaViewModelFactory
@@ -90,6 +91,9 @@ class PictogramaModificarFragment : Fragment() {
         //Data Binding de layout
         val application = requireNotNull(this.activity).application
         val pictogramaRepository = PictogramaRepository(DixitDatabase(application))
+
+        (activity as CategoriasActivity).supportActionBar?.title = getString(R.string.modificar_pictograma)
+
 
         //Configuro viewmodel
         val viewModelProviderFactory =

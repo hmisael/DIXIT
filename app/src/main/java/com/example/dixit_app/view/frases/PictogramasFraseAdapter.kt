@@ -61,7 +61,7 @@ class PictogramasFraseAdapter :  RecyclerView.Adapter<PictogramasFraseAdapter.Pi
         val pictogramaActual = differ.currentList[position]
 
         //TEXTO DEL PICTOGRAMA: asigno nombre del pictograma a la View de texto
-        holder.itemBinding.nombrePictograma.text = getLetras(pictogramaActual.nombrePictograma)
+        holder.itemBinding.nombrePictograma.text = pictogramaActual.nombrePictograma
 
         //Recupero del almacenamiento físico el archivo de la imagen con el id del pictograma
         //VERIFICAR si se puede cambiar el directorio, pues tomo el de holder
@@ -104,35 +104,6 @@ class PictogramasFraseAdapter :  RecyclerView.Adapter<PictogramasFraseAdapter.Pi
         return differ.currentList.size
     }
 
-
-    private fun getLetras(cadena: String): String {
-        val result : MutableList<String> = mutableListOf<String>()
-        var numberStr = ""
-        for(i : Int in cadena.indices){
-            val c: Char = cadena[i]
-            //Eliminar guión bajo para lectura correcta
-            if (c == '_') {
-                numberStr += ' '
-                if (i == cadena.length - 1) {
-                    result.add(numberStr)
-                }
-            }
-            else {
-                //Eliminar números
-                if (c !in '0'..'9') {
-                    numberStr += c
-                    if (i == cadena.length - 1) {
-                        result.add(numberStr.toString())
-                    }
-                    //Y finalmente si está vacía la cadena
-                } else if (!numberStr.isNullOrBlank()) {
-                    result.add(numberStr.toString())
-                    numberStr = ""
-                }
-            }
-        }
-        return result.joinToString(File.separator, "")
-    }
 
 }
 

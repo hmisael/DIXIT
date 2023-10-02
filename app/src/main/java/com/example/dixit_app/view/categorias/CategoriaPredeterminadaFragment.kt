@@ -26,6 +26,7 @@ import com.example.dixit_app.model.DixitDatabase
 import com.example.dixit_app.model.entities.Categoria
 import com.example.dixit_app.model.entities.Pictograma
 import com.example.dixit_app.model.repository.PictogramaRepository
+import com.example.dixit_app.view.CategoriasActivity
 import com.example.dixit_app.view.pictogramas.PictogramaImportadoAdapter
 import com.example.dixit_app.viewmodel.PictogramaViewModel
 import com.example.dixit_app.viewmodel.PictogramaViewModelFactory
@@ -59,6 +60,9 @@ class CategoriaPredeterminadaFragment : Fragment(), MenuProvider {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (activity as CategoriasActivity).supportActionBar?.title = getString(R.string.importar_pictogramas)
+
 
         //Menu
         val menuHost: MenuHost = requireActivity()
@@ -155,7 +159,7 @@ class CategoriaPredeterminadaFragment : Fragment(), MenuProvider {
         return when (menuItem.itemId) {
                 //accedo al layout a través de su id
                 R.id.menu_guardar -> {
-                    Log.i("PRUEBA", "MENU CLICK STRIN SIZE: "+stringsLista.size)
+                    //Log.i("PRUEBA", "MENU CLICK STRIN SIZE: "+stringsLista.size)
                     //Inserto pictogramas de a uno
                     for (i in 0 .. stringsLista.size-1) {
                         val pictograma =
