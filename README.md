@@ -3,4 +3,4 @@ Aplicación de tipo Sistema Aumentativo y Alternativo de Comunicación (SAAC). E
 
 # Dudas o sugerencias: sosahernanmisael@gmail.com
 
-![](https://github.com/hmisael/DIXIT/blob/screenshots/screen15.png)
+![](https://github.com/hmisael/DIXIT/blob/screenshots/screen6.png)
